@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    height: 100px;
+    width: 100vw;
+    background-color: antiquewhite;
+    position: fixed;
+    z-index: 3;
+    transition: 400ms;
+    visibility: hidden;
+}
+
+main{
+    height: 200vh;
+}
+
+#bgWrapper{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#bgVideo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    object-fit: cover;
+    z-index: 0;
+}
+
+#bgBackdrop{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(9, 124, 160, 0.35);
+}
+
+#logo{
+    height: min-content;
+    width: min-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
