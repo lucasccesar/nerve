@@ -7,15 +7,54 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <header></header>
+        <div id="preloader">
+            <p>CARREGANDO</p>
+        </div>
 
-        <main>
+        <header>
+            <img src="logoIcon.png" alt="">
+            <nav>
+                <a href="#main">Início</a>
+                <a href="#teste">Sobre</a>
+            </nav>
+            <button>Login</button>
+        </header>
+
+        <div id="#main">
             <div id="bgWrapper">
                 <video src="background.mp4" autoplay muted loop id="bgVideo"></video>
                 <div id="bgBackdrop"></div>
-                <img src="logo.png" alt="" id="logo">
+                <div id="nervePreloading">
+                    <img src="preloadingLogo.png" alt="Nerve Logo" id="preloadingLogo" />
+                    <img src="preloadingTitle.png" alt="Nerve" id="preloadingTitle" />
+                    <img src="preloadingText.png" alt="Transformação, Dedicação, Apoio e Harmonia" id="preloadingText" />
+                </div>
             </div>
-        </main>
+            <div id="divGradient"></div>
+        </div>
+
+        <div id="teste">
+            <p class="divTitle divTitleHidden">Sobre</p>
+            <p class="divDescription divTitleHidden">Conheça mais da start-up que decidiu facilitar a vida de uma pessoa com TDAH no mercado de trabalho!</p>
+            <div id="sobreWrapper">
+                <div class="sobreCards" id="funcionamentos">
+                    <img src="funcionalidades.png" alt="" />
+                    <p>FUNCIONAMENTOS</p>
+                    <div class="descriptionDiv">
+                        <p class="description">Com uma função de cronômetro e worklist o foco é mantido de forma personalizada para a necessidade do usuário, fazendo assim um trabalho mais dinâmico e atrativo.</p>
+                    </div>
+                </div>
+                <div id="transition"></div>
+                <div class="sobreCards" id="objetivos">
+                    <img src="alvo.png" alt="" />
+                    <p>OBJETIVOS</p>
+                    <div class="descriptionDiv">
+                        <p class="description">Nosso objetivo é fornecer ferramentas e recursos que auxiliem na gestão de tarefas, compromissos e informações de forma estruturada. Minimizando distrações, promove a produtividade e melhorando a qualidade de vida das pessoas com TDAH.</p>
+                    </div>
+                </div>
+            </div>
+            <button>INICIAR EXPERIÊNCIA</button>
+        </div>
 
         <script src="script.js"></script>
     </body>
