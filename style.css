@@ -10,6 +10,7 @@
 :root {
     overflow-x: hidden;
     overflow-y: hidden;
+    scroll-behavior: smooth;
 }
 
 #preloader {
@@ -137,7 +138,7 @@ header button:hover{
     cursor: pointer;
 }
 
-#main {
+main {
     height: 100vh;
     z-index: -1;
 }
