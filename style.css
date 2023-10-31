@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
-
 * {
     font-family: 'Roboto', sans-serif;
 }
@@ -82,7 +81,7 @@
     transition-delay: 900ms;
 }
 
-.showPreloading{
+.showPreloading {
     opacity: 100% !important;
     transform: translateY(0px) !important;
 }
@@ -105,35 +104,35 @@ header {
     justify-content: space-around;
 }
 
-header img{
+header img {
     width: 3.5vw;
 }
 
-header nav{
+header nav {
     display: flex;
     gap: 1vw;
 }
 
-header nav a{
+header nav a {
     text-decoration: none;
     color: white;
     font-family: 'DM Sans', sans-serif;
     font-size: 1vw;
 }
 
-header button{
-    background-color: #FFFFFF00;
+header button {
+    background-color: #ffffff00;
     border: 1px solid white;
     color: white;
     padding: 0.5vw 1vw;
     border-radius: 1vh;
     font-family: 'DM Sans', sans-serif;
     font-size: 1vw;
-    transition: 300ms
+    transition: 300ms;
 }
 
-header button:hover{
-    background-color: #FFFFFF;
+header button:hover {
+    background-color: #ffffff;
     color: black;
     cursor: pointer;
 }
@@ -165,7 +164,7 @@ main {
     height: 100vh;
     position: absolute;
     z-index: 1;
-    background: linear-gradient(#0F0F0F00 0%, #0F0F0F 95%);
+    background: linear-gradient(#0f0f0f00 0%, #0f0f0f 95%);
 }
 
 #logo {
@@ -178,17 +177,17 @@ main {
     z-index: 2;
 }
 
-#teste{
+#sobre {
     width: 100vw;
-    height: 200vh;
-    background-color: #0F0F0F;
+    height: fit-content;
+    background-color: #0f0f0f;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.divTitle{
+.divTitle {
     color: white;
     font-family: 'DM Sans', sans-serif;
     font-weight: 600;
@@ -198,30 +197,30 @@ main {
     text-align: center;
 }
 
-.divTitleHidden{
+.divTitleHidden {
     transform: translateY(5vw);
     opacity: 0%;
 }
 
-.divTitleShown{
+.divTitleShown {
     transform: translateY(0);
     opacity: 100% !important;
 }
 
-.divDescription{
+.divDescription {
     color: #b4b4b4;
     font-family: 'DM Sans', sans-serif;
     font-weight: 600;
     font-size: 1vw;
     width: 30%;
-    margin: 0 auto 5vw ;
+    margin: 0 auto 5vw;
     opacity: 100%;
     transition: 600ms;
     text-align: center;
     opacity: 0%;
 }
 
-#sobreWrapper{
+#sobreWrapper {
     display: flex;
     justify-content: center;
     gap: 30vw;
@@ -229,7 +228,7 @@ main {
     transition: 600ms;
 }
 
-.sobreCards{
+.sobreCards {
     background-color: #131314;
     width: 25vw;
     height: 30vw;
@@ -242,49 +241,48 @@ main {
     gap: 30px;
 }
 
-.sobreCards p{
+.sobreCards p {
     font-family: 'Krona One', sans-serif;
     color: white;
     font-size: 25px;
 }
 
-.sobreCards img{
+.sobreCards img {
     transition: 500ms;
     height: 6vw;
 }
 
-.descriptionDiv{
+.descriptionDiv {
     transition: 500ms;
     height: 0;
     overflow: hidden;
 }
 
-.descriptionDiv p{
+.descriptionDiv p {
     font-size: 1vw;
 }
 
-.description{
+.description {
     transition: 500ms;
     width: 80%;
     margin: auto;
     height: fit-content;
 }
 
-
-.hidden{
+.hidden {
     transform: translate(-50%, -150%);
     opacity: 0%;
 }
 
-.show{
+.show {
     transform: translate(-50%, -50%);
     opacity: 100%;
 }
 
-#teste button{
-    margin: 3vw 0;
+#sobre button {
+    margin: 3vw 0 7vw;
     padding: 1vw 2vw;
-    background-color: #FFFFFF00;
+    background-color: #ffffff00;
     border: 1px white solid;
     color: white;
     width: fit-content;
@@ -293,8 +291,72 @@ main {
     transition: 300ms;
 }
 
-#teste button:hover{
-    background-color: #FFFFFF;
+#sobre button:hover {
+    background-color: #ffffff;
     color: black;
     cursor: pointer;
+}
+
+#fotos {
+    width: 100vw;
+    height: fit-content;
+    background-color: #0f0f0f;
+    position: relative;
+}
+
+#fotosTitle{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#imagesSlider1, #imagesSlider2{
+    display: flex;
+    gap: 0.5vw;
+    opacity: 0%;
+    transition: 400ms;
+}
+
+#imagesSlider2{
+    margin-top: 0.5vw;
+}
+
+#imagesSlider1 .imagesSlider {
+    animation: 40s slide infinite linear;
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: fit-content;
+    gap: 0.5vw;
+}
+
+#imagesSlider2 .imagesSlider {
+    animation: 40s slideReverse infinite linear;
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: fit-content;
+    gap: 0.5vw;
+}
+
+.imagesSlider img {
+    height: 13vw;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slideReverse {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
