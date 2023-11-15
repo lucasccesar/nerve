@@ -288,10 +288,11 @@ main {
     width: fit-content;
     font-family: 'Krona One', sans-serif;
     border-radius: 2vw;
-    transition: 300ms;
+    transition: 600ms;
 }
 
 #sobre button:hover {
+    transition: 300ms;
     background-color: #ffffff;
     color: black;
     cursor: pointer;
@@ -302,9 +303,10 @@ main {
     height: fit-content;
     background-color: #0f0f0f;
     position: relative;
+    padding-bottom: 7vw;
 }
 
-#fotosTitle{
+#fotosTitle {
     margin: auto;
     display: flex;
     align-items: center;
@@ -312,19 +314,20 @@ main {
     flex-direction: column;
 }
 
-#imagesSlider1, #imagesSlider2{
+#imagesSlider1,
+#imagesSlider2 {
     display: flex;
     gap: 0.5vw;
     opacity: 0%;
     transition: 400ms;
 }
 
-#imagesSlider2{
+#imagesSlider2 {
     margin-top: 0.5vw;
 }
 
 #imagesSlider1 .imagesSlider {
-    animation: 40s slide infinite linear;
+    animation: 80s slide infinite linear;
     display: flex;
     flex-wrap: nowrap;
     min-width: fit-content;
@@ -332,7 +335,7 @@ main {
 }
 
 #imagesSlider2 .imagesSlider {
-    animation: 40s slideReverse infinite linear;
+    animation: 80s slideReverse infinite linear;
     display: flex;
     flex-wrap: nowrap;
     min-width: fit-content;
@@ -360,3 +363,77 @@ main {
         transform: translateX(0);
     }
 }
+
+#faq {
+    width: 100vw;
+    height: fit-content;
+    background-color: #0f0f0f;
+    padding-bottom: 7vw;
+}
+
+#faqsDiv {
+    width: 40vw;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    gap: 1vw;
+    flex-direction: column;
+    position: relative;
+}
+
+.faqs{
+    background-color: #131314;
+    border: 1px solid #262626;
+    border-radius: 20px;
+    padding: 1vw 1vw;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: 500ms;
+    position: relative;
+}
+
+.faqs:hover {
+    background-color: #171617;
+}
+
+.faqs button{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    opacity: 0%;
+    cursor: pointer;
+}
+
+.faqsQuestions {
+    font-family: 'DM Sans', sans-serif;
+    color: white;
+    height: fit-content;
+    display: flex;
+    box-sizing: border-box;
+    transition: 300ms;
+    font-weight: 600;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faqsQuestions span {
+    border: 1px solid #666666;
+    border-radius: 1000px;
+    color: #666666;
+    padding: 0.2vw;
+    transition: 300ms;
+}
+
+.faqsAnswers{
+    height: 0px;
+    overflow: hidden;
+    transition: 500ms;
+    color: #b4b4b4;
+    font-family: 'DM Sans', sans-serif;
+}
+
+
