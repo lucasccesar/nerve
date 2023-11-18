@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: #131212
+}
+
+h2{
+    color: white;
+}
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+  color: white;
+}
+
+#sign{
+    width: 60vw;
+    height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+
+#form{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    transition: 500ms;
+    background-color: #131314;
+    border: 1px #222222 solid;
+}
+
+#login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: visible;
+    opacity: 100%;
+    transition:visibility 62ms linear,opacity 62ms linear;
+}
+
+
+form{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    align-items: center;
+}
+
+#change{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    transition: 500ms;
+    background-color: rgb(8, 110, 110);
+    border: 1px #222222 solid;
+}
+
+.inputWrapper{
+    width: 100%;
+    position: relative;
+}
+
+.input{
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0px 0.5vw 0.3vw;
+}
+
+input{
+    background-color: #00000000;
+    border: none;
+    color: white;
+    outline: none;
+    font-size: 19px;
+    width: 100%;
+}
+
+label{
+    color: white;
+    font-size: 19px;
+    margin-left: 0.5vw;
+    position: absolute;
+    cursor: text;
+    transition: 300ms;
+}
+
+input::placeholder{
+    color: white;
+}
+
+.submit{
+    width: 100%;
+    background-color: darkcyan;
+    padding: 0.5vw 0px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.submit:hover{
+    background-color: rgb(0, 97, 97);
+}
+
+#signin{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    opacity: 0%;
+    transition: visibility 125ms linear,opacity 125ms linear;
+    transition-delay: 125ms;
+    gap: 2vw;
+}
+
+.sideBySide{
+    display: flex;
+    width: 100%;
+    gap: 1vw;
+}
+
+.sideBySide .inputWrapper{
+    width: 50%;
+}
+
+label[for="birthday"]{
+    font-size: 14px;
+    transform: translateY(-24px);
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.welcoming{
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    transition: visibility 125ms linear,opacity 125ms linear;
+}
+
+.welcoming p + p{
+    font-size: 14px;
+}
+
+#createAccount, #loginAccount{
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 150ms;
+    
+}
+
+#createAccount:hover, #loginAccount:hover{
+    color: rgb(186, 204, 204);
+}
+
+#createText{
+    opacity: 0%;
+    visibility: hidden;
+}

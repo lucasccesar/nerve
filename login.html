@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./login-page/login.css" />
+        <link rel="shortcut icon" href="../main-page/assets/logoIcon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <title>Faça Login</title>
+    </head>
+    <body>
+        <div id="sign">
+            <div id="form">
+                <div id="login">
+                    <h2>Entrar</h2>
+                    <form action="">
+                        <div class="inputWrapper">
+                            <label for="emailLogin">Email</label>
+                            <div class="input">
+                                <input type="email" id="emailLogin" required />
+                                <span class="material-symbols-rounded"> mail </span>
+                            </div>
+                        </div>
+                        <div class="inputWrapper">
+                            <label for="passwordLogin">Senha</label>
+                            <div class="input">
+                                <input type="password" id="passwordLogin" required />
+                                <span class="material-symbols-rounded"> lock </span>
+                            </div>
+                        </div>
+                        <input type="submit" value="Entrar" class="submit" />
+                    </form>
+                </div>
+                <div id="signin">
+                    <h2>Registrar-se</h2>
+                    <form action="">
+                        <div class="sideBySide">
+                            <div class="inputWrapper">
+                                <label for="name">Nome</label>
+                                <div class="input">
+                                    <input type="text" id="name" />
+                                    <span class="material-symbols-rounded"> person </span>
+                                </div>
+                            </div>
+                            <div class="inputWrapper">
+                                <label for="lastName">Sobrenome</label>
+                                <div class="input">
+                                    <input type="text" id="lastName" />
+                                    <span class="material-symbols-rounded"> person </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inputWrapper">
+                            <label for="emailSignin">Email</label>
+                            <div class="input">
+                                <input type="email" id="emailSignin" required />
+                                <span class="material-symbols-rounded"> mail </span>
+                            </div>
+                        </div>
+                        <div class="inputWrapper">
+                            <label for="passwordSignin">Senha</label>
+                            <div class="input">
+                                <input type="password" id="passwordSignin" required />
+                                <span class="material-symbols-rounded"> lock </span>
+                            </div>
+                        </div>
+                        <div class="inputWrapper">
+                            <label for="confirmPassword">Confirmar Senha</label>
+                            <div class="input">
+                                <input type="password" id="confirmPassword" required />
+                                <span class="material-symbols-rounded"> lock </span>
+                            </div>
+                        </div>
+                        <input type="submit" value="Criar Conta" class="submit" />
+                    </form>
+                </div>
+            </div>
+            <div id="change">
+                <div class="welcoming" id="loginText">
+                    <h2>Seja Bem-Vindo de Volta!</h2>
+                    <p>De volta ao Nerve! Que emoção tê-lo de volta. Faça login para se aventurar novamente em desafios eletrizantes. Sua jornada continua aqui. Vamos lá!</p>
+                    <p>Ainda Não Tem Uma Conta? <span id="createAccount">Crie Aqui</span></p>
+                </div>
+                <div class="welcoming" id="createText">
+                    <h2>Crie Sua Conta!</h2>
+                    <p>Participe do Nerve agora! Cadastre-se para desfrutar de desafios emocionantes. Insira suas informações e comece a aventura. Vamos lá!</p>
+                    <p>Já Tem Uma Conta? <span id="loginAccount">Entre Aqui</span></p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="./login-page/login.js"></script>
+</html>
