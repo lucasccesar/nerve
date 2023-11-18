@@ -8,9 +8,9 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = ['title', 'task_content', 'state', 'worklist']
 
 class UserSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(max_length=50)
+    name = serializers.CharField(max_length=50, read_only=True)
     
     class Meta:
         model = User
-        fields = ['name', 'username', 'email', 'password']
-        # read_only_fields = ['name']
+        fields = ['name', 'username', 'email']
+        read_only_fields = ['name']
