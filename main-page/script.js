@@ -1,3 +1,4 @@
+const vw = (Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)*(1/100))
 const body = document.querySelector('body');
 const root = document.querySelector(':root');
 const header = document.querySelector('header');
@@ -6,9 +7,14 @@ const carregando = document.querySelector('#preloader p');
 const preloadingLogo = document.getElementById('preloadingLogo');
 const preloadingTitle = document.getElementById('preloadingTitle');
 const preloadingText = document.getElementById('preloadingText');
-const faqs = document.querySelectorAll('.faqs')
-faqs.forEach(e => {
-    e.addEventListener('click', faqsExpand)
+const faq = document.getElementById('faq')
+let faqHeight = faq.offsetHeight - (6*vw)
+console.log(faqHeight)
+const faqs = document.querySelectorAll('.faqs');
+const faqsHeight = faqs[0].offsetHeight
+console.log(vw)
+faqs.forEach((e) => {
+    e.addEventListener('click', faqsExpand);
 });
 let scroll1 = 0;
 let scroll2 = 0;
@@ -18,16 +24,22 @@ document.getElementById('funcionamentos').addEventListener('mouseleave', hideDes
 document.getElementById('objetivos').addEventListener('mouseleave', hideDescription);
 header.style.transform = `translateY(-${header.offsetHeight}px)`;
 
-function faqsExpand(event){
-    faqDiv = event.target.parentElement
-    if(faqDiv.style.gap == '0vw'){
-        faqDiv.style.gap = '1vw'
-        event.target.parentElement.lastElementChild.style.height = `${event.target.parentElement.lastElementChild.firstElementChild.offsetHeight}px`
-        event.target.parentElement.firstElementChild.nextElementSibling.lastElementChild.style.rotate = '45deg'
-    } else{
-        faqDiv.style.gap = '0vw'
-        event.target.parentElement.lastElementChild.style.height = 0
-        event.target.parentElement.firstElementChild.nextElementSibling.lastElementChild.style.rotate = '0deg'
+function faqsExpand(event) {
+    faqDiv = event.target.parentElement;
+    if (event.target.nodeName == 'BUTTON') {
+        if (faqDiv.style.gap == '0vw') {
+            faq.style.height = `${faqHeight + event.target.parentElement.lastElementChild.firstElementChild.offsetHeight + vw}px`
+            faqHeight = faqHeight + event.target.parentElement.lastElementChild.firstElementChild.offsetHeight + vw
+            faqDiv.style.gap = '1vw';
+            event.target.parentElement.lastElementChild.style.height = `${event.target.parentElement.lastElementChild.firstElementChild.offsetHeight}px`;
+            event.target.parentElement.firstElementChild.nextElementSibling.lastElementChild.style.rotate = '45deg';
+        } else {
+            faq.style.height = `${faqHeight - event.target.parentElement.lastElementChild.firstElementChild.offsetHeight - vw}px`
+            faqHeight = faqHeight - event.target.parentElement.lastElementChild.firstElementChild.offsetHeight - vw
+            faqDiv.style.gap = '0vw';
+            event.target.parentElement.lastElementChild.style.height = 0;
+            event.target.parentElement.firstElementChild.nextElementSibling.lastElementChild.style.rotate = '0deg';
+        }
     }
 }
 
@@ -61,15 +73,15 @@ window.onbeforeunload = function () {
 
 window.addEventListener('scroll', (event) => {
     scroll1 = this.scrollY;
-    if(scroll1 < (preloadingText.offsetTop + preloadingText.offsetHeight) || scroll1 > scroll2){
+    if (scroll1 < preloadingText.offsetTop + preloadingText.offsetHeight || scroll1 > scroll2) {
         header.style.visibility = 'hidden';
         header.style.transform = `translateY(-${header.offsetHeight}px)`;
-    }else if (scroll1 < scroll2) {
+    } else if (scroll1 < scroll2) {
         header.style.transition = '400ms';
         header.style.visibility = 'visible';
         header.style.transform = `translateY(0px)`;
     }
-    scroll2 = scroll1
+    scroll2 = scroll1;
 });
 
 const observer = new IntersectionObserver((entries) => {
@@ -77,14 +89,14 @@ const observer = new IntersectionObserver((entries) => {
         let title = document.querySelector('.divTitle');
         let sobre = document.getElementById('sobreWrapper');
         let description = document.querySelector('.divDescription');
-        let btn = document.querySelector('#sobre button')
+        let btn = document.querySelector('#sobre button');
         if (entries[0].isIntersecting) {
             title.classList.replace('divTitleHidden', 'divTitleShown');
             description.classList.replace('divTitleHidden', 'divTitleShown');
             sobre.style.opacity = '100%';
             sobre.style.gap = '10vw';
-            btn.style.transform = 'translateY(0px)'
-            btn.style.opacity = '100%'
+            btn.style.transform = 'translateY(0px)';
+            btn.style.opacity = '100%';
         } else {
             if (title.classList[1] == 'divTitleShown') {
                 title.classList.replace('divTitleShown', 'divTitleHidden');
@@ -94,45 +106,50 @@ const observer = new IntersectionObserver((entries) => {
                 sobre.style.opacity = '0%';
                 sobre.style.gap = '30vw';
             }
-            btn.style.transform = 'translateY(-150%)'
-            btn.style.opacity = '0%'
+            btn.style.transform = 'translateY(-150%)';
+            btn.style.opacity = '0%';
         }
     }
 
-    if (entries[0].target.id == 'imagesSlider2'){
+    if (entries[0].target.id == 'imagesSlider2') {
         let title = entries[0].target.previousElementSibling.previousElementSibling.firstElementChild;
         let description = entries[0].target.previousElementSibling.previousElementSibling.lastElementChild;
         let sibling = entries[0].target.previousElementSibling;
         if (entries[0].isIntersecting) {
             title.classList.replace('divTitleHidden', 'divTitleShown');
             description.classList.replace('divTitleHidden', 'divTitleShown');
-            entries[0].target.style.opacity = '100%'
-            sibling.style.opacity = '100%'
+            entries[0].target.style.opacity = '100%';
+            sibling.style.opacity = '100%';
         } else {
             if (title.classList[1] == 'divTitleShown') {
                 title.classList.replace('divTitleShown', 'divTitleHidden');
                 description.classList.replace('divTitleShown', 'divTitleHidden');
-                entries[0].target.style.opacity = '0%'
-                sibling.style.opacity = '0%'
+                entries[0].target.style.opacity = '0%';
+                sibling.style.opacity = '0%';
             }
         }
     }
-    
-    if (entries[0].target.id == 'faqsDiv'){
-        console.log(entries[0].target.previousElementSibling)
+
+    if (entries[0].target.id == 'faqsDiv') {
         let title = entries[0].target.previousElementSibling.firstElementChild;
         let description = entries[0].target.previousElementSibling.lastElementChild;
         /* let sibling = entries[0].target.previousElementSibling; */
         if (entries[0].isIntersecting) {
             title.classList.replace('divTitleHidden', 'divTitleShown');
             description.classList.replace('divTitleHidden', 'divTitleShown');
-            entries[0].target.style.opacity = '100%'
+            entries[0].target.style.opacity = '100%';
+            faqs.forEach(e => {
+                e.classList.replace('divTitleHidden', 'divTitleShown');
+            });
             /* sibling.style.opacity = '100%' */
         } else {
             if (title.classList[1] == 'divTitleShown') {
                 title.classList.replace('divTitleShown', 'divTitleHidden');
                 description.classList.replace('divTitleShown', 'divTitleHidden');
-                entries[0].target.style.opacity = '0%'
+                entries[0].target.style.opacity = '0%';
+                faqs.forEach(e => {
+                    e.classList.replace('divTitleShown', 'divTitleHidden');
+                });
                 /* sibling.style.opacity = '0%' */
             }
         }
@@ -158,9 +175,9 @@ const observer = new IntersectionObserver((entries) => {
     }); */
 });
 
-const faqsDiv = document.getElementById('faqsDiv')
+const faqsDiv = document.getElementById('faqsDiv');
 observer.observe(faqsDiv);
-const imagesSlider = document.getElementById('imagesSlider2')
+const imagesSlider = document.getElementById('imagesSlider2');
 observer.observe(imagesSlider);
 const funcionamentos = document.getElementById('funcionamentos');
 observer.observe(funcionamentos);
@@ -174,6 +191,3 @@ function hideDescription(event) {
     event.target.firstElementChild.style.height = '6vw';
     document.querySelector(`#${event.target.id} .descriptionDiv`).style.height = `0px`;
 }
-
-/* const hiddenChildren = document.querySelectorAll('.hiddenChild') ;
-hiddenChildren.forEach((el) => observer.observe(el) && console.log(el)); */

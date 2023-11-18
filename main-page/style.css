@@ -101,7 +101,9 @@ header {
     visibility: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0vw 4vw;
+    box-sizing: border-box;
 }
 
 header img {
@@ -368,7 +370,8 @@ main {
     width: 100vw;
     height: fit-content;
     background-color: #0f0f0f;
-    padding-bottom: 7vw;
+    padding-bottom: 6vw;
+    transition: 500ms;
 }
 
 #faqsDiv {
@@ -381,7 +384,7 @@ main {
     position: relative;
 }
 
-.faqs{
+.faqs {
     background-color: #131314;
     border: 1px solid #262626;
     border-radius: 20px;
@@ -397,7 +400,7 @@ main {
     background-color: #171617;
 }
 
-.faqs button{
+.faqs button {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -428,12 +431,10 @@ main {
     transition: 300ms;
 }
 
-.faqsAnswers{
+.faqsAnswers {
     height: 0px;
     overflow: hidden;
     transition: 500ms;
     color: #b4b4b4;
     font-family: 'DM Sans', sans-serif;
 }
-
-
