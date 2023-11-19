@@ -23,6 +23,7 @@ class Task(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, related_name="profile")
     name = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50, default='')
 
     def __str__(self) -> str:
         return self.user.get_username()

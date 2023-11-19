@@ -11,7 +11,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import Token, AccessToken, RefreshToken
 
-from .serializers import TaskSerializer, UserSerializer
+from .serializers import TaskSerializer, UserSerializer, ProfileSerializer
 from .models import Task, Profile
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -20,6 +20,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
 
         token['name'] = user.profile.name
+        token['lastname'] = user.profile.lastname
 
         return token
 
@@ -31,7 +32,7 @@ class Login(APIView):
     def post(self, request, format=None):
         user = get_object_or_404(User, username=request.data["username"])
         if not user.check_password(request.data['password']):
-            return Response({"detail":"not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"detail":"Not found"}, status=status.HTTP_404_NOT_FOUND)
 
         tokens = RefreshToken().for_user(user)
         tokens_obj = {
@@ -48,16 +49,19 @@ class Signup(APIView):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+
             user = User.objects.get(username=request.data['username'])
             user.set_password(request.data['password'])
             user.save()
-            profile = Profile.objects.create(user=user, name=request.data["name"])
-            profile.save()
+
+            profile = Profile.objects.create(user=user, name=request.data['name'], lastname=request.data['lastname'])
+
             refresh = RefreshToken.for_user(user)
+            
             data = {
                 "refresh":str(refresh),
                 "access":str(refresh.access_token),
-                "user": serializer
+                "user": serializer.data,
             }
             return Response(data=data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
