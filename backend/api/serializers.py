@@ -1,16 +1,20 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Task
+from .models import Task, Profile
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = ['title', 'task_content', 'state', 'worklist']
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['name', 'lastname']
+
 class UserSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(max_length=50, read_only=True)
-    
+    profile = ProfileSerializer(read_only=True)
+
     class Meta:
         model = User
-        fields = ['name', 'username', 'email']
-        read_only_fields = ['name']
+        fields = ['username', 'email', "profile"]
