@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <p>Seja Bem-Vindo, </p>
+    </body>
+
+    <script type="module">
+        import { jwtDecode } from "./node_modules/jwt-decode/build/esm/index.js";
+
+        let p = document.querySelector('p');
+        let user = JSON.parse(localStorage.getItem('user'));
+
+        p.innerHTML += ` <b>${user.name} ${user.lastname}</b>`
+    </script>
+</html>

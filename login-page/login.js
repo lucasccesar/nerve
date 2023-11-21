@@ -1,44 +1,100 @@
-const form = document.querySelector('#form');
-const login = document.getElementById('login')
-const signin = document.getElementById('signin')
-login.addEventListener('transitionend', changeDelay)
-let x = 1
+import { jwtDecode } from "../node_modules/jwt-decode/build/esm/index.js";
+
+const form = document.querySelector('#formDiv');
+const signupForm = document.getElementById('signupForm');
+const loginForm = document.getElementById('loginForm');
+const login = document.getElementById('login');
+const signin = document.getElementById('signin');
+login.addEventListener('transitionend', changeDelay);
+let x = 1;
 const change = document.getElementById('change');
 const inputs = document.querySelectorAll('input');
 inputs.forEach((e) => {
     e.addEventListener('focus', moveLabelFocus);
     e.addEventListener('focusout', moveLabelFocusOut);
 });
-const createAccount = document.getElementById('createAccount')
-const loginAccount = document.getElementById('loginAccount')
-createAccount.addEventListener('click', sla)
-loginAccount.addEventListener('click', sla)
-const loginText = document.getElementById('loginText')
-const createText = document.getElementById('createText')
+const createAccount = document.getElementById('createAccount');
+const loginAccount = document.getElementById('loginAccount');
+createAccount.addEventListener('click', sla);
+loginAccount.addEventListener('click', sla);
+const loginText = document.getElementById('loginText');
+const createText = document.getElementById('createText');
 
-function changeDelay(){
-    console.log(x)
-    if((x/4)%4==1){
-        signin.style.transitionDelay = '0ms'
-        login.style.transitionDelay = '125ms'
-    } if((x/4)%4 == 2){
-        signin.style.transitionDelay = '125ms'
-        login.style.transitionDelay = '0ms'
-        x = 0
+signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let password = document.getElementById('passwordSignin').value;
+    let passwordConfirm = document.getElementById('confirmPassword').value;
+
+    if (password != passwordConfirm) {
+        console.log('fudeu');
+    } else {
+        let tokens = localStorage.getItem('authTokens');
+
+        if (!tokens) {
+            let response = await fetch('https://pi-kxis.onrender.com/api/signup/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: e.target.name.value, lastname: e.target.lastName.value, username: e.target.usernameSignup.value, password: e.target.passwordSignin.value, email: e.target.emailSignin.value }),
+            });
+        }
     }
-    x++
+});
+
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    
+    let tokens = localStorage.getItem('authTokens');
+    if (!tokens) {
+        let emailUsername = e.target.emailLogin.value.indexOf('@') == -1 ? 'username' : 'email'
+        let object = {password: e.target.passwordLogin.value}
+        object[emailUsername] = e.target.emailLogin.value
+        let response = await fetch('https://pi-kxis.onrender.com/api/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(object),
+        });
+        let data = await response.json();
+
+        if (response.status === 201) {
+            localStorage.setItem('authTokens', JSON.stringify(data));
+            let tokens = JSON.parse(localStorage.getItem('authTokens'));
+            let token = tokens['refresh'];
+            let token_access = JSON.stringify(token.access);
+            localStorage.setItem('user', JSON.stringify(jwtDecode(token_access)));
+            window.location='teste.html'
+        } else {
+            logout();
+        }
+    }
+});
+
+function changeDelay() {
+    if ((x / 4) % 4 == 1) {
+        signin.style.transitionDelay = '0ms';
+        login.style.transitionDelay = '125ms';
+    }
+    if ((x / 4) % 4 == 2) {
+        signin.style.transitionDelay = '125ms';
+        login.style.transitionDelay = '0ms';
+        x = 0;
+    }
+    x++;
 }
 
 function moveLabelFocus(event) {
-    if(event.target.id != 'submit'){
+    if (event.target.id != 'submit') {
         event.target.parentElement.parentElement.firstElementChild.style.transform = `translateY(-24px)`;
         event.target.parentElement.parentElement.firstElementChild.style.fontSize = `14px`;
     }
 }
 
 function moveLabelFocusOut(event) {
-    console.log(event.target.type)
-    if (event.target.value != '' || event.target.type == "date") {
+    if (event.target.value != '' || event.target.type == 'date') {
     } else {
         event.target.parentElement.parentElement.firstElementChild.style.transform = `translateY(0px)`;
         event.target.parentElement.parentElement.firstElementChild.style.fontSize = `19px`;
@@ -49,24 +105,24 @@ function sla() {
     if (form.style.left != '50%') {
         form.style.left = '50%';
         change.style.left = '-50%';
-        login.style.opacity = '0%'
-        login.style.visibility = 'hidden'
-        signin.style.opacity = '100%'
-        signin.style.visibility = 'visible'
-        loginText.style.opacity = '0%'
-        loginText.style.visibility = 'hidden'
-        createText.style.opacity = '100%'
-        createText.style.visibility = 'visible'
+        login.style.opacity = '0%';
+        login.style.visibility = 'hidden';
+        signin.style.opacity = '100%';
+        signin.style.visibility = 'visible';
+        loginText.style.opacity = '0%';
+        loginText.style.visibility = 'hidden';
+        createText.style.opacity = '100%';
+        createText.style.visibility = 'visible';
     } else {
         form.style.left = '0%';
         change.style.left = '0%';
-        signin.style.opacity = '0%'
-        signin.style.visibility = 'hidden'
-        login.style.opacity = '100%'
-        login.style.visibility = 'visible'
-        createText.style.opacity = '0%'
-        createText.style.visibility = 'hidden'
-        loginText.style.opacity = '100%'
-        loginText.style.visibility = 'visible'
+        signin.style.opacity = '0%';
+        signin.style.visibility = 'hidden';
+        login.style.opacity = '100%';
+        login.style.visibility = 'visible';
+        createText.style.opacity = '0%';
+        createText.style.visibility = 'hidden';
+        loginText.style.opacity = '100%';
+        loginText.style.visibility = 'visible';
     }
 }

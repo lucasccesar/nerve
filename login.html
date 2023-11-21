@@ -10,21 +10,21 @@
     </head>
     <body>
         <div id="sign">
-            <div id="form">
+            <div id="formDiv">
                 <div id="login">
                     <h2>Entrar</h2>
-                    <form action="">
+                    <form action="" id="loginForm">
                         <div class="inputWrapper">
-                            <label for="emailLogin">Email</label>
+                            <label for="emailLogin">Email ou Nome de Usuário</label>
                             <div class="input">
-                                <input type="email" id="emailLogin" required />
+                                <input type="text" id="emailLogin" name="emailLogin" required />
                                 <span class="material-symbols-rounded"> mail </span>
                             </div>
                         </div>
                         <div class="inputWrapper">
                             <label for="passwordLogin">Senha</label>
                             <div class="input">
-                                <input type="password" id="passwordLogin" required />
+                                <input type="password" id="passwordLogin" name="passwordLogin" required />
                                 <span class="material-symbols-rounded"> lock </span>
                             </div>
                         </div>
@@ -33,41 +33,48 @@
                 </div>
                 <div id="signin">
                     <h2>Registrar-se</h2>
-                    <form action="">
+                    <form action="#" method="post" id="signupForm">
                         <div class="sideBySide">
                             <div class="inputWrapper">
                                 <label for="name">Nome</label>
                                 <div class="input">
-                                    <input type="text" id="name" />
+                                    <input type="text" id="name" name="name" onkeydown="return /[a-zA-Z]/i.test(event.key)"/>
                                     <span class="material-symbols-rounded"> person </span>
                                 </div>
                             </div>
                             <div class="inputWrapper">
                                 <label for="lastName">Sobrenome</label>
                                 <div class="input">
-                                    <input type="text" id="lastName" />
+                                    <input type="text" id="lastName" name="lastName" onkeydown="return /[a-zA-Z]/i.test(event.key)"/>
                                     <span class="material-symbols-rounded"> person </span>
                                 </div>
                             </div>
                         </div>
                         <div class="inputWrapper">
+                            <label for="usernameSignup">Nome de Usuário</label>
+                            <div class="input">
+                                <input type="text" id="usernameSignup" name="usernameSignup" minlength="3" maxlength="20" required />
+                                <span class="material-symbols-rounded"> account_circle </span>
+                            </div>
+                        </div>
+                        <div class="inputWrapper">
                             <label for="emailSignin">Email</label>
                             <div class="input">
-                                <input type="email" id="emailSignin" required />
+                                <input type="email" id="emailSignin" name="emailSignin" required />
                                 <span class="material-symbols-rounded"> mail </span>
                             </div>
                         </div>
                         <div class="inputWrapper">
                             <label for="passwordSignin">Senha</label>
                             <div class="input">
-                                <input type="password" id="passwordSignin" required />
+                                <input type="password" id="passwordSignin" name="passwordSignin" required />
                                 <span class="material-symbols-rounded"> lock </span>
                             </div>
                         </div>
                         <div class="inputWrapper">
                             <label for="confirmPassword">Confirmar Senha</label>
                             <div class="input">
-                                <input type="password" id="confirmPassword" required />
+                                <input type="password" id="confirmPassword" name="confirmPassword" required />
                                 <span class="material-symbols-rounded"> lock </span>
                             </div>
                         </div>
@@ -89,5 +96,5 @@
             </div>
         </div>
     </body>
-    <script src="./login-page/login.js"></script>
+    <script src="./login-page/login.js" type="module"></script>
 </html>
