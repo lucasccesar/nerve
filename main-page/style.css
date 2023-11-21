@@ -112,7 +112,7 @@ header img {
 
 header nav {
     display: flex;
-    gap: 1vw;
+    gap: 1.5vw;
 }
 
 header nav a {
@@ -120,9 +120,14 @@ header nav a {
     color: white;
     font-family: 'DM Sans', sans-serif;
     font-size: 1vw;
+    transition: 300ms;
 }
 
-.login {
+header nav a:hover{
+    color: darkcyan;
+}
+
+#loginBtn {
     background-color: #ffffff00;
     border: 1px solid white;
     color: white;
@@ -134,9 +139,10 @@ header nav a {
     text-decoration: none;
 }
 
-.login:hover {
-    background-color: #ffffff;
-    color: black;
+#loginBtn:hover {
+    background-color: darkcyan;
+    border: 1px solid darkcyan;
+    color: white;
     cursor: pointer;
 }
 
@@ -223,6 +229,10 @@ main {
     opacity: 0%;
 }
 
+.cyan{
+    color: darkcyan;
+}
+
 #sobreWrapper {
     display: flex;
     justify-content: center;
@@ -298,7 +308,7 @@ main {
 #sobre a:hover {
     transition: 300ms;
     background-color: #ffffff;
-    color: black;
+    color: darkcyan;
     cursor: pointer;
 }
 

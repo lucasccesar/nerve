@@ -74,7 +74,7 @@ if (user == null) {
                 let token = tokens['refresh'];
                 let token_access = JSON.stringify(token.access);
                 localStorage.setItem('user', JSON.stringify(jwtDecode(token_access)));
-                window.location = 'teste.html';
+                window.location = 'tasks.html';
             } else {
                 logout();
             }
@@ -135,5 +135,5 @@ if (user == null) {
         }
     }
 } else {
-    window.location = 'teste.html';
+    window.location = 'tasks.html';
 }

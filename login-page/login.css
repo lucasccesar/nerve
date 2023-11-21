@@ -198,6 +198,7 @@ label[for="birthday"]{
     cursor: pointer;
     color: white;
     transition: 150ms;
+    text-decoration: underline;
     
 }
 
