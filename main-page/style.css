@@ -282,7 +282,7 @@ main {
     opacity: 100%;
 }
 
-#sobre button {
+#sobre a {
     margin: 3vw 0 7vw;
     padding: 1vw 2vw;
     background-color: #ffffff00;
@@ -292,9 +292,10 @@ main {
     font-family: 'Krona One', sans-serif;
     border-radius: 2vw;
     transition: 600ms;
+    text-decoration: none;
 }
 
-#sobre button:hover {
+#sobre a:hover {
     transition: 300ms;
     background-color: #ffffff;
     color: black;

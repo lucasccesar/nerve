@@ -9,10 +9,8 @@ const preloadingTitle = document.getElementById('preloadingTitle');
 const preloadingText = document.getElementById('preloadingText');
 const faq = document.getElementById('faq')
 let faqHeight = faq.offsetHeight - (6*vw)
-console.log(faqHeight)
 const faqs = document.querySelectorAll('.faqs');
 const faqsHeight = faqs[0].offsetHeight
-console.log(vw)
 faqs.forEach((e) => {
     e.addEventListener('click', faqsExpand);
 });
@@ -89,7 +87,7 @@ const observer = new IntersectionObserver((entries) => {
         let title = document.querySelector('.divTitle');
         let sobre = document.getElementById('sobreWrapper');
         let description = document.querySelector('.divDescription');
-        let btn = document.querySelector('#sobre button');
+        let btn = document.querySelector('#sobre a');
         if (entries[0].isIntersecting) {
             title.classList.replace('divTitleHidden', 'divTitleShown');
             description.classList.replace('divTitleHidden', 'divTitleShown');
