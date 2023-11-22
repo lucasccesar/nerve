@@ -20,6 +20,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 4vw;
 }
 
 header:after {
@@ -64,7 +65,7 @@ header:after {
 button {
     height: fit-content;
     background: rgb(185, 255, 255);
-    background: linear-gradient(45deg, rgb(126, 167, 167) 0%, rgb(8, 133, 133) 100%);
+    background: linear-gradient(45deg, rgb(143, 180, 180) 0%, rgb(5, 122, 122) 100%);
     border: none;
     padding: 0.7vw 0.9vw;
     border-radius: 10px;
@@ -97,4 +98,35 @@ button {
     display: flex;
     align-items: center;
     gap: 0.5vw;
+}
+
+#noTasks, #tasks{
+    display: none;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    color: white;
+    gap: 1vw;
+}
+
+#addTask{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#taskForm{
+    width: 70vw;
+    height: 50vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #131314;
+    border: 1px #222222 solid;
+    border-radius: 20px;
 }
