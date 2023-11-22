@@ -7,25 +7,14 @@ if (user == null) {
 } else {
     var token = JSON.parse(localStorage.getItem('authTokens'));
     let p = document.querySelector('p');
+    let noTasks = document.getElementById('noTasks');
+    let tasks = document.getElementById('tasks');
     let addTaskBtn = document.getElementById('addTaskBtn')
     addTaskBtn.addEventListener('click', addTaskHandler)
     let addTask = document.getElementById('addTask')
-    addTask.addEventListener('click', (event)=>{
-        if(event.target.id=='addTask'){
-            addTask.style.display = 'none'
-        }
+    addTask.addEventListener('click', ()=>{
+        addTask.style.display = 'none'
     })
-
-    document.getElementById('worklistCheckbox').checked = true
-    let switchCB = document.querySelectorAll('.switch')
-    switchCB.forEach(e => {
-        e.addEventListener('click', (event)=>{
-            document.getElementById('worklistCheckbox').checked = !document.getElementById('worklistCheckbox').checked
-            if(document.getElementById('worklistCheckbox').checked == true){
-                
-            }
-        })
-    });
 
     function addTaskHandler(){
         addTask.style.display = 'flex'
@@ -43,5 +32,11 @@ if (user == null) {
 
     await fetch('http://127.0.0.1:8000/api/task/', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(task) }); */
     
-    
+    console.log(response);
+
+    if (response.length == 0) {
+        noTasks.style.display = 'flex';
+    } else {
+        tasks.style.display = 'flex';
+    }
 }

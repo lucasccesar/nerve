@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Atividades</title>
         <link rel="stylesheet" href="./tasks/tasks.css" />
-        <link rel="shortcut icon" href="./tasks/assets/logoIcon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="./tasks/assets/logoIcon.png" type="image/x-icon">
     </head>
 
     <body>
         <header>
             <div id="headerDiv1">
-                <img src="./tasks/assets/logoIcon.png" alt="" id="logo" onclick="window.location = 'index.html'" />
+                <img src="./tasks/assets/logoIcon.png" alt="" id="logo" onclick="window.location = 'index.html'"/>
                 <div id="anchors">
                     <a href="">Pendente</a>
                     <a href="">Urgência</a>
@@ -37,38 +37,19 @@
         <div id="headerBorder"></div>
 
         <main>
-            <h2>Atividades</h2>
-
+            <div id="noTasks">
+                <h2>Você Ainda Não Tem Nenhuma Atividade</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rem cumque repudiandae eos porro hic possimus amet assumenda dicta officiis tempore voluptatibus illo, culpa quod! Dolor consectetur neque consequuntur!</p>
+            </div>
             <div id="tasks">
-                <div id="urgency" class="activities"><p>Urgência</p></div>
-                <div id="pendency" class="activities"><p>Pendente</p></div>
-                <div id="finished" class="activities"><p>Concluído</p></div>
+                <h2>Atividades</h2>
             </div>
 
-            <button id="worklist">Worklist</button>
-
             <div id="addTask">
-                <form id="taskForm">
-                    <label for=""></label>
-                    <input type="text" />
-                    <div>
-                        <p></p>
-                        <div class="switch" id="worklistSwitch">
-                            <div class="checkboxLabel"></div>
-                            <input type="checkbox" id="worklistCheckbox">
-                        </div>
-
-                        <label for=""></label>
-                        <input type="text" />
-
-                        <label for=""></label>
-                        <input type="" />
-                    </div>
-                </form>
+                <div id="taskForm"></div>
             </div>
         </main>
     </body>
 
     <script type="module" src="./tasks/tasks.js"></script>
-    <script src="./tasks/fodase.js"></script>
 </html>
