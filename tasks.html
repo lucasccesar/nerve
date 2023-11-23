@@ -13,14 +13,25 @@
             <div id="headerDiv1">
                 <img src="./tasks/assets/logoIcon.png" alt="" id="logo" onclick="window.location = 'index.html'" />
                 <div id="anchors">
-                    <a href="">Pendente</a>
-                    <a href="">Urgência</a>
-                    <a href="">Concluído</a>
-                    <a href="">Worklist</a>
+                    <div class="anchorDiv currentAnchor">
+                        <a href="#">Atividades</a>
+                    </div>
+                    <div class="anchorDiv">
+                        <a href="/tasks/pendency.html">Pendente</a>
+                    </div>
+                    <div class="anchorDiv">
+                        <a href="">Urgência</a>
+                    </div>
+                    <div class="anchorDiv">
+                        <a href="">Concluído</a>
+                    </div>
+                    <div class="anchorDiv">
+                        <a href="">Worklist</a>
+                    </div>
                 </div>
             </div>
             <div id="headerDiv2">
-                <button id="addTaskBtn">Novo +</button>
+                <button id="addTaskBtn">Novo</button>
                 <div id="user">
                     <div id="userSection">
                         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
@@ -40,35 +51,51 @@
             <h2>Atividades</h2>
 
             <div id="tasks">
-                <div id="urgency" class="activities"><p>Urgência</p></div>
-                <div id="pendency" class="activities"><p>Pendente</p></div>
-                <div id="finished" class="activities"><p>Concluído</p></div>
+                <div id="urgency" class="activities" onclick="window.location = '/tasks/urgency.html'"><p>Urgência</p></div>
+                <div id="pendency" class="activities" onclick="window.location = '/tasks/pendency.html'"><p>Pendente</p></div>
+                <div id="finished" class="activities" onclick="window.location = '/tasks/finished.html'"><p>Concluído</p></div>
             </div>
 
             <button id="worklist">Worklist</button>
 
             <div id="addTask">
                 <form id="taskForm">
-                    <label for=""></label>
-                    <input type="text" />
-                    <div>
-                        <p></p>
-                        <div class="switch" id="worklistSwitch">
-                            <div class="checkboxLabel"></div>
-                            <input type="checkbox" id="worklistCheckbox">
+                    <h2>Nova Atividade</h2>
+                    <div class="title">
+                        <label for="taskTitle">Título:</label>
+                        <input type="text" id="taskTitle" required/>
+                    </div>
+                    <div id="taskFormSection">
+                        <div>
+                            <p>Worklist (Não/Sim):</p>
+                            <div class="switch" id="worklistSwitch">
+                                <div class="checkboxLabel"></div>
+                                <input type="checkbox" id="worklistCheckbox">
+                            </div>
                         </div>
 
-                        <label for=""></label>
-                        <input type="text" />
+                        <div>
+                            <p>Urgente (Não/Sim):</p>
+                            <div class="switch" id="urgencySwitch">
+                                <div class="checkboxLabel"></div>
+                                <input type="checkbox" id="urgencyCheckbox">
+                            </div>
+                        </div>
 
-                        <label for=""></label>
-                        <input type="" />
+                        <div>
+                            <label for="deadline">Prazo:</label>
+                            <input type="datetime-local" id="deadline" required/>
+                        </div>
                     </div>
+                    <div class="description">
+                        <label for="taskDescription">Descrição:</label>
+                        <textarea name="taskDescription" id="taskDescription" required></textarea>
+                    </div>
+                    <input type="submit" value="Criar">
                 </form>
             </div>
         </main>
     </body>
 
     <script type="module" src="./tasks/tasks.js"></script>
-    <script src="./tasks/fodase.js"></script>
 </html>
