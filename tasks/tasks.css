@@ -175,12 +175,12 @@ h2 {
 }
 
 #pendency {
-    border: 3px solid rgb(230, 230, 0);
+    border: 3px solid darkcyan;
     border-radius: 15px;
 }
 
 #pendency:hover {
-    background-color: rgb(230, 230, 0);
+    background-color: darkcyan;
     color: #131212;
 }
 
@@ -228,7 +228,7 @@ h2 {
     transform: translate(-50%, -50%);
     background-color: #131314;
     border: 1px #222222 solid;
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     padding: 2vw;

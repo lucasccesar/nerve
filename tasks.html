@@ -11,7 +11,7 @@
     <body>
         <header>
             <div id="headerDiv1">
-                <img src="./tasks/assets/logoIcon.png" alt="" id="logo" onclick="window.location = 'index.html'" />
+                <img src="./tasks/assets/logoIcon.png" alt="" id="logo" onclick="window.location = window.location.origin + '/index.html'" />
                 <div id="anchors">
                     <div class="anchorDiv currentAnchor">
                         <a href="#">Atividades</a>
@@ -63,7 +63,7 @@
                     <h2>Nova Atividade</h2>
                     <div class="title">
                         <label for="taskTitle">Título:</label>
-                        <input type="text" id="taskTitle" required/>
+                        <input type="text" id="taskTitle" required maxlength="28"/>
                     </div>
                     <div id="taskFormSection">
                         <div>

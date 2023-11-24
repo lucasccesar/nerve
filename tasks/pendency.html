@@ -11,7 +11,7 @@
     <body>
         <header>
             <div id="headerDiv1">
-                <img src="./assets/logoIcon.png" alt="" id="logo" onclick="window.location = 'index.html'" />
+                <img src="./assets/logoIcon.png" alt="" id="logo" onclick="window.location = window.location.origin + '/index.html'" />
                 <div id="anchors">
                     <div class="anchorDiv">
                         <a href="/tasks.html">Atividades</a>
@@ -42,76 +42,115 @@
                         <p></p>
                     </div>
                     <svg id="dropdown" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-370.078q-6 0-10.808-2-4.807-2-9.423-6.615L269.847-568.616q-6.692-6.692-6.885-15.807-.192-9.115 6.885-16.192t16.307-7.077q9.231 0 16.307 7.077L480-423.076l177.539-177.539q6.692-6.692 15.807-6.884 9.115-.193 16.192 6.884t7.077 16.307q0 9.231-7.077 16.308L500.231-378.693q-4.616 4.615-9.423 6.615-4.808 2-10.808 2Z" /></svg>
+                    <div id="dropdownDiv">
+                        <div>
+                            <button id="logout">Sair</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
         <div id="headerBorder"></div>
 
         <main>
-            <svg id="loading" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q17 0 28.5 11.5T520-840q0 17-11.5 28.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-17 11.5-28.5T840-520q17 0 28.5 11.5T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Z"/></svg>
+            <svg class="loading" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q17 0 28.5 11.5T520-840q0 17-11.5 28.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-17 11.5-28.5T840-520q17 0 28.5 11.5T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Z" /></svg>
             <div id="noTasks">
                 <h2>Você não tem nenhuma atividade <span>Pendente</span></h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rem cumque repudiandae eos porro hic possimus amet assumenda dicta officiis tempore voluptatibus illo, culpa quod! Dolor consectetur neque consequuntur!</p>
             </div>
             <div id="tasks">
-                <h2>Atividades <span>Pendentes</span></h2>
+                <div id="mainUpper">
+                    <button class="hidden">Editar</button>
+                    <h2>Atividades <span>Pendentes</span></h2>
+                    <button id="edit">Editar</button>
+                </div>
                 <div class="tasksDisplay">
                     <div class="tasksDisplayLeft">
-                        <div class="tasksBox" data-id="">
-                            <div class="tasksBoxUpper">
-                                <div class="tasksBoxTitle"><p></p></div>
-                                <p>Prazo:</p>
+                        <div class="tasksBoxWrapper">
+                            <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                <div class="tasksBoxUpper">
+                                    <div class="tasksBoxTitle"><p></p></div>
+                                    <p>Prazo:</p>
+                                </div>
+                                <div class="taskBoxDescription">
+                                    <p></p>
+                                </div>
                             </div>
-                            <div class="taskBoxDescription">
-                                <p></p>
-                            </div>
+                            <button>
+                                <img src="./assets/edit.png" alt="" />
+                            </button>
                         </div>
-                        <div class="tasksBox" data-id="">
-                            <div class="tasksBoxUpper">
-                                <div class="tasksBoxTitle"><p></p></div>
-                                <p>Prazo:</p>
+                        <div class="tasksBoxWrapper">
+                            <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                <div class="tasksBoxUpper">
+                                    <div class="tasksBoxTitle"><p></p></div>
+                                    <p>Prazo:</p>
+                                </div>
+                                <div class="taskBoxDescription">
+                                    <p></p>
+                                </div>
                             </div>
-                            <div class="taskBoxDescription">
-                                <p></p>
-                            </div>
+                            <button>
+                                <img src="./assets/edit.png" alt="" />
+                            </button>
                         </div>
-                        <div class="tasksBox" data-id="">
-                            <div class="tasksBoxUpper">
-                                <div class="tasksBoxTitle"><p></p></div>
-                                <p>Prazo:</p>
+                        <div class="tasksBoxWrapper">
+                            <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                <div class="tasksBoxUpper">
+                                    <div class="tasksBoxTitle"><p></p></div>
+                                    <p>Prazo:</p>
+                                </div>
+                                <div class="taskBoxDescription">
+                                    <p></p>
+                                </div>
                             </div>
-                            <div class="taskBoxDescription">
-                                <p></p>
-                            </div>
+                            <button>
+                                <img src="./assets/edit.png" alt="" />
+                            </button>
                         </div>
                     </div>
                     <div class="tasksDisplayRight">
-                        <div class="tasksBox" data-id="">
-                            <div class="tasksBoxUpper">
-                                <div class="tasksBoxTitle"><p></p></div>
-                                <p>Prazo:</p>
+                        <div class="tasksBoxWrapper">
+                            <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                <div class="tasksBoxUpper">
+                                    <div class="tasksBoxTitle"><p></p></div>
+                                    <p>Prazo:</p>
+                                </div>
+                                <div class="taskBoxDescription">
+                                    <p></p>
+                                </div>
                             </div>
-                            <div class="taskBoxDescription">
-                                <p></p>
-                            </div>
+                            <button>
+                                <img src="./assets/edit.png" alt="" />
+                            </button>
                         </div>
-                        <div class="tasksBox" data-id="">
-                            <div class="tasksBoxUpper">
-                                <div class="tasksBoxTitle"><p></p></div>
-                                <p>Prazo:</p>
+                        <div class="tasksBoxWrapper">
+                            <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                <div class="tasksBoxUpper">
+                                    <div class="tasksBoxTitle"><p></p></div>
+                                    <p>Prazo:</p>
+                                </div>
+                                <div class="taskBoxDescription">
+                                    <p></p>
+                                </div>
                             </div>
-                            <div class="taskBoxDescription">
-                                <p></p>
-                            </div>
+                            <button>
+                                <img src="./assets/edit.png" alt="" />
+                            </button>
                         </div>
-                        <div class="tasksBox" data-id="">
-                            <div class="tasksBoxUpper">
-                                <div class="tasksBoxTitle"><p></p></div>
-                                <p>Prazo:</p>
+                        <div class="tasksBoxWrapper">
+                            <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                <div class="tasksBoxUpper">
+                                    <div class="tasksBoxTitle"><p></p></div>
+                                    <p>Prazo:</p>
+                                </div>
+                                <div class="taskBoxDescription">
+                                    <p></p>
+                                </div>
                             </div>
-                            <div class="taskBoxDescription">
-                                <p></p>
-                            </div>
+                            <button>
+                                <img src="./assets/edit.png" alt="" />
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -122,7 +161,7 @@
                     <h2>Nova Atividade</h2>
                     <div class="title">
                         <label for="taskTitle">Título:</label>
-                        <input type="text" id="taskTitle" required />
+                        <input type="text" id="taskTitle" required maxlength="28" />
                     </div>
                     <div id="taskFormSection">
                         <div>
@@ -153,8 +192,49 @@
                     <input type="submit" value="Criar" />
                 </form>
             </div>
+
+            <div id="editTask" data-id="">
+                <form id="editTaskForm">
+                    <h2>Editar Atividade</h2>
+                    <div class="title">
+                        <label for="editTaskTitle">Título:</label>
+                        <input type="text" id="editTaskTitle" required maxlength="28" />
+                    </div>
+                    <div id="editTaskFormSection">
+                        <div>
+                            <p>Worklist (Não/Sim):</p>
+                            <div class="switch" id="editWorklistSwitch">
+                                <div class="checkboxLabel"></div>
+                                <input type="checkbox" id="editWorklistCheckbox" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <p>Urgente (Não/Sim):</p>
+                            <div class="switch" id="editUrgencySwitch">
+                                <div class="checkboxLabel"></div>
+                                <input type="checkbox" id="editUrgencyCheckbox" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="editDeadline">Prazo:</label>
+                            <input type="datetime-local" id="editDeadline" required />
+                        </div>
+                    </div>
+                    <div class="description">
+                        <label for="editTaskDescription">Descrição:</label>
+                        <textarea name="taskDescription" id="editTaskDescription" required></textarea>
+                    </div>
+                    <div id="buttons">
+                        <button id="save">Salvar</button>
+                        <button id="delete">Excluir</button>
+                    </div>
+                    <button id="conclude">Marcar como Concluído</button>
+                </form>
+            </div>
         </main>
     </body>
 
-    <script type="module" src="./pendecy.js"></script>
+    <script type="module" src="./pendency.js"></script>
 </html>

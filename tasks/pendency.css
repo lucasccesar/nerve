@@ -14,6 +14,9 @@ body {
     width: 70vw;
     background-color: #131212;
     margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -23,7 +26,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 4vw;
 }
 
 header:after {
@@ -63,7 +65,7 @@ header:after {
 }
 
 .currentAnchor {
-    border-bottom: 3px solid yellow;
+    border-bottom: 3px solid darkcyan;
     border-top: 3px solid #ffffff00;
 }
 
@@ -104,6 +106,7 @@ button:hover {
     align-items: center;
     gap: 4vw;
     cursor: pointer;
+    position: relative;
 }
 
 #user svg {
@@ -120,13 +123,31 @@ button:hover {
     height: 1.5vw;
 }
 
+#dropdownDiv{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 10px;
+    transition: height 500ms;
+}
+
+#logout{
+    width: 100%;
+    background: none;
+    background-color: #131212;
+    border: 1px solid #2c2c2c;
+}
+
 #userSection {
     display: flex;
     align-items: center;
     gap: 0.5vw;
 }
 
-#loading {
+.loading {
     display: inline-block;
     animation: load 500ms infinite linear;
     filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(251deg) brightness(104%) contrast(101%);
@@ -166,11 +187,25 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 2vw;
+    height: 100%;
+}
+
+#mainUpper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 h2 {
     color: white;
     text-align: center;
+    width: fit-content;
+    margin: auto;
 }
 
 #tasks {
@@ -190,11 +225,49 @@ h2 {
     gap: 10vw;
 }
 
+.tasksBoxWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    visibility: hidden;
+    justify-content: space-between;
+    padding: 1vw;
+    background-color: darkcyan;
+    border-radius: 10px;
+}
+
+.tasksBoxWrapper p {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.tasksBoxWrapper button {
+    display: none;
+    background: none;
+    border: 1px solid white;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 2876px;
+    padding: 0.2vw;
+    width: 2vw;
+    height: 2vw;
+}
+
+.tasksBoxWrapper button img {
+    width: 1vw;
+    height: 1vw;
+}
+
+.tasksBoxWrapper button:hover {
+    background-color: rgb(216, 216, 216);
+    border-color: rgb(216, 216, 216);
+}
+
 .tasksBox {
     display: flex;
     flex-direction: column;
     gap: 0.5vw;
-    visibility: hidden;
+    width: 100%;
 }
 
 .tasksBoxUpper {
@@ -224,6 +297,8 @@ h2 {
     border-radius: 10px;
     display: flex;
     padding: 0.5vw;
+    line-break: anywhere;
+    overflow-y: auto;
 }
 
 .taskBoxDescription p {
@@ -239,7 +314,7 @@ h2 {
 }
 
 span {
-    color: rgb(230, 230, 0);
+    color: #00c1c1;
 }
 
 .activities {
@@ -258,7 +333,8 @@ span {
     font-weight: bold;
 }
 
-#addTask {
+#addTask,
+#editTask {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
@@ -268,7 +344,8 @@ span {
     display: none;
 }
 
-#taskForm {
+#taskForm,
+#editTaskForm {
     width: 50vw;
     height: 60vh;
     position: absolute;
@@ -277,7 +354,7 @@ span {
     transform: translate(-50%, -50%);
     background-color: #131314;
     border: 1px #222222 solid;
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     padding: 2vw;
@@ -285,7 +362,9 @@ span {
 }
 
 #taskForm p,
-#taskForm label {
+#taskForm label,
+#editTaskForm p,
+#editTaskForm label {
     color: white;
     font-size: 20px;
     font-family: 'Raleway', sans-serif !important;
@@ -297,14 +376,16 @@ span {
     gap: 0.5vw;
 }
 
-#taskFormSection {
+#taskFormSection,
+#editTaskFormSection {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 2vw;
 }
 
-#taskFormSection div {
+#taskFormSection div,
+#editTaskFormSection div {
     display: flex;
     align-items: center;
     gap: 1vw;
@@ -379,4 +460,46 @@ input[type='submit'] {
 
 input[type='submit']:hover {
     background-color: rgb(0, 109, 109);
+}
+
+#save, #conclude, #delete{
+    font-size: 20px;
+    border: none;
+    background: none;
+    background-color: darkcyan ;
+    border-radius: 10px;
+    padding: 0.5vw 0;
+    cursor: pointer;
+    transition: 300ms;
+    font-weight: bold;
+    color: white;
+}
+
+#save:hover {
+    background-color: rgb(0, 109, 109);
+}
+
+#buttons{
+    display: flex;
+    gap: 1vw;
+}
+
+#save, #conclude, #delete{
+    width: 100%;
+}
+
+#conclude{
+    background-color: green;
+}
+
+#conclude:hover{
+    background-color: rgb(0, 102, 0);
+}
+
+#delete{
+    background-color: red;
+}
+
+#delete:hover{
+    background-color: rgb(155, 1, 1);
 }
