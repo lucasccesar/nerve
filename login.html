@@ -28,7 +28,11 @@
                                 <span class="material-symbols-rounded"> lock </span>
                             </div>
                         </div>
-                        <input type="submit" value="Entrar" class="submit" />
+                        <div class="inputWrapper">
+                            <p>Email/Nome de Usuário ou Senha incorreto</p>
+                            <label for="enterAccountBtn" id="enterAccountLabel" class="submitLabel">Entrar</label>
+                            <input type="submit" value="Entrar" class="submit" id="enterAccountBtn" style="display: none;"/>
+                        </div>
                     </form>
                 </div>
                 <div id="signin">
@@ -38,14 +42,14 @@
                             <div class="inputWrapper">
                                 <label for="name">Nome</label>
                                 <div class="input">
-                                    <input type="text" id="name" name="name" onkeydown="return /[a-zA-Z]/i.test(event.key)"/>
+                                    <input type="text" id="name" name="name" onkeydown="return /[a-zA-Z]/i.test(event.key)" />
                                     <span class="material-symbols-rounded"> person </span>
                                 </div>
                             </div>
                             <div class="inputWrapper">
                                 <label for="lastName">Sobrenome</label>
                                 <div class="input">
-                                    <input type="text" id="lastName" name="lastName" onkeydown="return /[a-zA-Z]/i.test(event.key)"/>
+                                    <input type="text" id="lastName" name="lastName" onkeydown="return /[a-zA-Z]/i.test(event.key)" />
                                     <span class="material-symbols-rounded"> person </span>
                                 </div>
                             </div>
@@ -78,7 +82,8 @@
                                 <span class="material-symbols-rounded"> lock </span>
                             </div>
                         </div>
-                        <input type="submit" value="Criar Conta" class="submit" />
+                        <label for="createAccountBtn" id="createAccountLabel" class="submitLabel">Criar Conta</label>
+                        <input type="submit" value="Criar Conta" class="submit" id="createAccountBtn" style="display: none;"/>
                     </form>
                 </div>
             </div>

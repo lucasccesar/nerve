@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Pendentes</title>
-        <link rel="stylesheet" href="./pendency.css" />
+        <title>Urgentes</title>
+        <link rel="stylesheet" href="./urgency.css" />
         <link rel="shortcut icon" href="./assets/logoIcon.png" type="image/x-icon" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
@@ -17,11 +17,11 @@
                     <div class="anchorDiv">
                         <a href="/tasks.html">Atividades</a>
                     </div>
-                    <div class="anchorDiv currentAnchor">
-                        <a href="#">Pendente</a>
-                    </div>
                     <div class="anchorDiv">
-                        <a href="./urgency.html">Urgente</a>
+                        <a href="./pendency.html">Pendente</a>
+                    </div>
+                    <div class="anchorDiv currentAnchor">
+                        <a href="#">Urgente</a>
                     </div>
                     <div class="anchorDiv">
                         <a href="./concluded.html">Concluído</a>
@@ -59,13 +59,13 @@
         <main>
             <svg class="loading" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q17 0 28.5 11.5T520-840q0 17-11.5 28.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-17 11.5-28.5T840-520q17 0 28.5 11.5T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Z" /></svg>
             <div id="noTasks">
-                <h2>Você não tem nenhuma atividade <span>Pendente</span></h2>
+                <h2>Você não tem nenhuma atividade <span>Urgente</span></h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rem cumque repudiandae eos porro hic possimus amet assumenda dicta officiis tempore voluptatibus illo, culpa quod! Dolor consectetur neque consequuntur!</p>
             </div>
             <div id="tasks">
                 <div id="mainUpper">
                     <button class="hidden">Editar</button>
-                    <h2>Atividades <span>Pendentes</span></h2>
+                    <h2>Atividades <span>Urgentes</span></h2>
                     <button id="edit">Editar</button>
                 </div>
                 <div id="tasksDisplayWrapper"></div>
@@ -158,5 +158,5 @@
         </main>
     </body>
 
-    <script type="module" src="./pendency.js"></script>
+    <script type="module" src="./urgency.js"></script>
 </html>

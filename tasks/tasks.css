@@ -14,6 +14,10 @@ body {
     width: 70vw;
     background-color: #131212;
     margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }
 
 header {
@@ -104,6 +108,7 @@ button:hover{
     align-items: center;
     gap: 4vw;
     cursor: pointer;
+    position: relative;
 }
 
 #user svg {
@@ -118,6 +123,40 @@ button:hover{
 #dropdown {
     width: 1.5vw;
     height: 1.5vw;
+}
+
+#dropdownDiv{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 10px;
+    transition: visibility 200ms linear, opacity 200ms linear, transform 200ms;
+    transform: translateY(-0.3vw);
+    opacity: 0%;
+    visibility: hidden;
+}
+
+#logout{
+    width: 100%;
+    background: none;
+    background-color: #1e1e1e;
+    border: 1px solid #2c2c2c;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+    transition: 300ms;
+}
+
+#logout:hover{
+    background-color: #141414;
+}
+
+#logout span{
+    color: white;
 }
 
 #userSection {

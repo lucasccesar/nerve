@@ -6,7 +6,6 @@ if (user == null) {
     window.location = 'login.html';
 } else {
     var token = JSON.parse(localStorage.getItem('authTokens'));
-    console.log(token);
     let p = document.querySelector('p');
     let addTaskBtn = document.getElementById('addTaskBtn');
     addTaskBtn.addEventListener('click', addTaskHandler);
@@ -17,11 +16,25 @@ if (user == null) {
         }
     });
     let form = document.getElementById('taskForm');
+    let userDiv = document.getElementById('user');
+    let dropdownDiv = document.getElementById('dropdownDiv');
+    let logout = document.getElementById('logout');
+    userDiv.addEventListener('click', (event) => {
+        if (event.target != logout) {
+            if (dropdownDiv.style.transform != `translateY(0px)`) {
+                dropdownDiv.style.transform = `translateY(0px)`;
+                dropdownDiv.style.opacity = '100%'
+                dropdownDiv.style.visibility = 'visible'
+            } else {
+                dropdownDiv.style.transform = 'translateY(-0.3vw)';
+                dropdownDiv.style.opacity = '0%'
+                dropdownDiv.style.visibility = 'hidden'
+            }
+        }
+    });
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        console.log(e.target.worklistCheckbox.checked)
         
         let tokens = JSON.parse(localStorage.getItem('authTokens'));
 
@@ -35,8 +48,6 @@ if (user == null) {
             };
             let response = await fetch('https://pi-kxis.onrender.com/api/task/', { method: 'POST', headers: { 'Content-Type': 'application/json', "Authorization":`Bearer ${token.refresh.access}` }, body: JSON.stringify(task) });
             let data = await response.json();
-
-            console.log(data)
 
             if (response.status === 201) {
                 window.location = 'tasks.html';

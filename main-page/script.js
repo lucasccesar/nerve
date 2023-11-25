@@ -1,4 +1,4 @@
-const vw = (Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)*(1/100))
+const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) * (1 / 100);
 const body = document.querySelector('body');
 const root = document.querySelector(':root');
 const header = document.querySelector('header');
@@ -7,10 +7,10 @@ const carregando = document.querySelector('#preloader p');
 const preloadingLogo = document.getElementById('preloadingLogo');
 const preloadingTitle = document.getElementById('preloadingTitle');
 const preloadingText = document.getElementById('preloadingText');
-const faq = document.getElementById('faq')
-let faqHeight = faq.offsetHeight - (6*vw)
+const faq = document.getElementById('faq');
+let faqHeight = faq.offsetHeight - 6 * vw;
 const faqs = document.querySelectorAll('.faqs');
-const faqsHeight = faqs[0].offsetHeight
+const faqsHeight = faqs[0].offsetHeight;
 faqs.forEach((e) => {
     e.addEventListener('click', faqsExpand);
 });
@@ -26,14 +26,14 @@ function faqsExpand(event) {
     faqDiv = event.target.parentElement;
     if (event.target.nodeName == 'BUTTON') {
         if (faqDiv.style.gap == '0vw') {
-            faq.style.height = `${faqHeight + event.target.parentElement.lastElementChild.firstElementChild.offsetHeight + vw}px`
-            faqHeight = faqHeight + event.target.parentElement.lastElementChild.firstElementChild.offsetHeight + vw
+            faq.style.height = `${faqHeight + event.target.parentElement.lastElementChild.firstElementChild.offsetHeight + vw}px`;
+            faqHeight = faqHeight + event.target.parentElement.lastElementChild.firstElementChild.offsetHeight + vw;
             faqDiv.style.gap = '1vw';
             event.target.parentElement.lastElementChild.style.height = `${event.target.parentElement.lastElementChild.firstElementChild.offsetHeight}px`;
             event.target.parentElement.firstElementChild.nextElementSibling.lastElementChild.style.rotate = '45deg';
         } else {
-            faq.style.height = `${faqHeight - event.target.parentElement.lastElementChild.firstElementChild.offsetHeight - vw}px`
-            faqHeight = faqHeight - event.target.parentElement.lastElementChild.firstElementChild.offsetHeight - vw
+            faq.style.height = `${faqHeight - event.target.parentElement.lastElementChild.firstElementChild.offsetHeight - vw}px`;
+            faqHeight = faqHeight - event.target.parentElement.lastElementChild.firstElementChild.offsetHeight - vw;
             faqDiv.style.gap = '0vw';
             event.target.parentElement.lastElementChild.style.height = 0;
             event.target.parentElement.firstElementChild.nextElementSibling.lastElementChild.style.rotate = '0deg';
@@ -136,7 +136,7 @@ const observer = new IntersectionObserver((entries) => {
             title.classList.replace('divTitleHidden', 'divTitleShown');
             description.classList.replace('divTitleHidden', 'divTitleShown');
             entries[0].target.style.opacity = '100%';
-            faqs.forEach(e => {
+            faqs.forEach((e) => {
                 e.classList.replace('divTitleHidden', 'divTitleShown');
             });
             /* sibling.style.opacity = '100%' */
@@ -145,7 +145,7 @@ const observer = new IntersectionObserver((entries) => {
                 title.classList.replace('divTitleShown', 'divTitleHidden');
                 description.classList.replace('divTitleShown', 'divTitleHidden');
                 entries[0].target.style.opacity = '0%';
-                faqs.forEach(e => {
+                faqs.forEach((e) => {
                     e.classList.replace('divTitleShown', 'divTitleHidden');
                 });
                 /* sibling.style.opacity = '0%' */

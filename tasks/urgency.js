@@ -35,7 +35,8 @@ if (user == null) {
     let filteredResponse = [];
 
     response.forEach((e) => {
-        if (e.state == 'pendente') {
+        if (e.state == 'urgencia') {
+            console.log(e)
             filteredResponse[filteredResponse.length] = e;
         }
     });
@@ -315,7 +316,14 @@ if (user == null) {
                     document.getElementById('editWorklistCheckbox').parentElement.firstElementChild.style.transform = 'translateX(0%)';
                     document.getElementById('editWorklistCheckbox').parentElement.style.backgroundColor = 'white';
                 }
-                document.getElementById('editUrgencyCheckbox').value = false;
+                document.getElementById('editUrgencyCheckbox').checked = e.parentElement.firstElementChild.dataset.state == 'urgencia' ? true : false;
+                if (document.getElementById('editUrgencyCheckbox').checked == true) {
+                    document.getElementById('editUrgencyCheckbox').parentElement.firstElementChild.style.transform = 'translateX(100%)';
+                    document.getElementById('editUrgencyCheckbox').parentElement.style.backgroundColor = 'darkcyan';
+                } else {
+                    document.getElementById('editUrgencyCheckbox').parentElement.firstElementChild.style.transform = 'translateX(0%)';
+                    document.getElementById('editUrgencyCheckbox').parentElement.style.backgroundColor = 'white';
+                }
                 document.getElementById('editDeadline').value = e.parentElement.firstElementChild.dataset.date.substr(0, 16);
                 document.getElementById('editTaskDescription').value = e.parentElement.firstElementChild.dataset.task_content;
 

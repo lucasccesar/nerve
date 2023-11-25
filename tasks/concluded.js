@@ -35,7 +35,8 @@ if (user == null) {
     let filteredResponse = [];
 
     response.forEach((e) => {
-        if (e.state == 'pendente') {
+        if (e.state == 'concluido') {
+            console.log(e)
             filteredResponse[filteredResponse.length] = e;
         }
     });
@@ -315,7 +316,14 @@ if (user == null) {
                     document.getElementById('editWorklistCheckbox').parentElement.firstElementChild.style.transform = 'translateX(0%)';
                     document.getElementById('editWorklistCheckbox').parentElement.style.backgroundColor = 'white';
                 }
-                document.getElementById('editUrgencyCheckbox').value = false;
+                document.getElementById('editUrgencyCheckbox').checked = e.parentElement.firstElementChild.dataset.state == 'urgencia' ? true : false;
+                if (document.getElementById('editUrgencyCheckbox').checked == true) {
+                    document.getElementById('editUrgencyCheckbox').parentElement.firstElementChild.style.transform = 'translateX(100%)';
+                    document.getElementById('editUrgencyCheckbox').parentElement.style.backgroundColor = 'darkcyan';
+                } else {
+                    document.getElementById('editUrgencyCheckbox').parentElement.firstElementChild.style.transform = 'translateX(0%)';
+                    document.getElementById('editUrgencyCheckbox').parentElement.style.backgroundColor = 'white';
+                }
                 document.getElementById('editDeadline').value = e.parentElement.firstElementChild.dataset.date.substr(0, 16);
                 document.getElementById('editTaskDescription').value = e.parentElement.firstElementChild.dataset.task_content;
 
@@ -338,7 +346,7 @@ if (user == null) {
             let editTask = {
                 title: event.target.parentElement.editTaskTitle.value,
                 task_content: event.target.parentElement.editTaskDescription.value,
-                state: 'concluido',
+                state: event.target.parentElement.editUrgencyCheckbox.checked ? 'urgencia' : 'pendente',
                 worklist: event.target.parentElement.editWorklistCheckbox.checked.toString(),
                 date: event.target.parentElement.editDeadline.value + ':00',
             };
@@ -362,8 +370,8 @@ if (user == null) {
             let editTask = {
                 title: event.target.parentElement.parentElement.editTaskTitle.value,
                 task_content: event.target.parentElement.parentElement.editTaskDescription.value,
-                state: event.target.parentElement.parentElement.editUrgencyCheckbox.checked ? 'urgencia' : 'pendente',
-                worklist: event.target.parentElement.parentElement.editWorklistCheckbox.checked.toString(),
+                state: 'concluida',
+                worklist: false,
                 date: event.target.parentElement.parentElement.editDeadline.value + ':00',
             };
             let response = await fetch(`https://pi-kxis.onrender.com/api/task/${event.target.parentElement.parentElement.dataset.id}/`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token.refresh.access}` }, body: JSON.stringify(editTask) });

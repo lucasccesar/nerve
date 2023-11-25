@@ -25,11 +25,11 @@ if (user == null) {
 
     signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
         let password = document.getElementById('passwordSignin').value;
         let passwordConfirm = document.getElementById('confirmPassword').value;
 
         if (password != passwordConfirm) {
-            console.log('fudeu');
         } else {
             let tokens = localStorage.getItem('authTokens');
 
@@ -41,11 +41,10 @@ if (user == null) {
                     },
                     body: JSON.stringify({ name: e.target.name.value, lastname: e.target.lastName.value, username: e.target.usernameSignup.value, password: e.target.passwordSignin.value, email: e.target.emailSignin.value }),
                 })
-                    .then(console.log('carregando'))
+                    .then((e.target.createAccountLabel.innerHTML = '<svg class="loading" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q17 0 28.5 11.5T520-840q0 17-11.5 28.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-17 11.5-28.5T840-520q17 0 28.5 11.5T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Z" /></svg>'))
                     .then((response) => response.json());
-                console.log(response.username);
-                if(response.username == undefined){
-                    window.location = 'account-created.html'
+                if (response.username == undefined) {
+                    window.location = 'account-created.html';
                 }
             }
         }
@@ -65,7 +64,11 @@ if (user == null) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(object),
-            });
+            })
+                .then((document.getElementById('enterAccountLabel').innerHTML = '<svg class="loading" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q17 0 28.5 11.5T520-840q0 17-11.5 28.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-17 11.5-28.5T840-520q17 0 28.5 11.5T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Z" /></svg>'))
+                .then((response) => {
+                    return response;
+                });
             let data = await response.json();
 
             if (response.status === 201) {
@@ -76,7 +79,11 @@ if (user == null) {
                 localStorage.setItem('user', JSON.stringify(jwtDecode(token_access)));
                 window.location = 'tasks.html';
             } else {
-                logout();
+                document.querySelectorAll('#formDiv .input').forEach((e) => {
+                    e.style.borderBottom = '1px solid red';
+                    document.querySelector('#loginForm .inputWrapper p').style.display = 'inline-block';
+                });
+                document.getElementById('enterAccountLabel').innerHTML = 'Entrar';
             }
         }
     });
@@ -96,8 +103,12 @@ if (user == null) {
 
     function moveLabelFocus(event) {
         if (event.target.id != 'submit') {
-            event.target.parentElement.parentElement.firstElementChild.style.transform = `translateY(-24px)`;
-            event.target.parentElement.parentElement.firstElementChild.style.fontSize = `14px`;
+            if (event.target.parentElement.parentElement.firstElementChild.innerText != 'Entrar' && event.target.parentElement.parentElement.firstElementChild.innerText != 'Registrar-se') {
+                event.target.parentElement.parentElement.firstElementChild.style.transform = `translateY(-24px)`;
+                event.target.parentElement.parentElement.firstElementChild.style.fontSize = `14px`;
+                event.target.parentElement.style.borderBottom = '1px solid white';
+                document.querySelector('#loginForm .inputWrapper p').style.display = 'none';
+            }
         }
     }
 
@@ -106,6 +117,8 @@ if (user == null) {
         } else {
             event.target.parentElement.parentElement.firstElementChild.style.transform = `translateY(0px)`;
             event.target.parentElement.parentElement.firstElementChild.style.fontSize = `19px`;
+            event.target.parentElement.style.borderBottom = '1px solid white';
+            document.querySelector('#loginForm .inputWrapper p').style.display = 'none';
         }
     }
 
