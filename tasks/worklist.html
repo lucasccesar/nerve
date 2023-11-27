@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Pendentes</title>
-        <link rel="stylesheet" href="./pendency.css" />
+        <link rel="stylesheet" href="./worklist.css" />
         <link rel="shortcut icon" href="./assets/logoIcon.png" type="image/x-icon" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
@@ -17,8 +17,8 @@
                     <div class="anchorDiv">
                         <a href="/tasks.html">Atividades</a>
                     </div>
-                    <div class="anchorDiv currentAnchor">
-                        <a href="#">Pendente</a>
+                    <div class="anchorDiv">
+                        <a href="./pendency.html">Pendente</a>
                     </div>
                     <div class="anchorDiv">
                         <a href="./urgency.html">Urgente</a>
@@ -26,8 +26,8 @@
                     <div class="anchorDiv">
                         <a href="./concluded.html">Concluído</a>
                     </div>
-                    <div class="anchorDiv">
-                        <a href="./worklist.html">Worklist</a>
+                    <div class="anchorDiv currentAnchor">
+                        <a href="#">Worklist</a>
                     </div>
                 </div>
             </div>
@@ -59,23 +59,72 @@
         <main>
             <svg class="loading" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q17 0 28.5 11.5T520-840q0 17-11.5 28.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-17 11.5-28.5T840-520q17 0 28.5 11.5T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Z" /></svg>
             <div id="noTasks">
-                <h2>Você não tem nenhuma atividade <span>Pendente</span></h2>
+                <h2>Você não tem nenhuma atividade na <span>Worklist</span></h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusantium rem cumque repudiandae eos porro hic possimus amet assumenda dicta officiis tempore voluptatibus illo, culpa quod! Dolor consectetur neque consequuntur!</p>
             </div>
             <div id="tasks">
                 <div id="mainUpper">
                     <button class="hidden">Editar</button>
-                    <h2>Atividades <span>Pendentes</span></h2>
+                    <h2><span>Worklist</span></h2>
                     <button id="edit">Editar</button>
                 </div>
-                <div id="tasksDisplayWrapper"></div>
-                <button id="moveLeft" class="move">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="m104.923-480 295.269 294.885q6.847 7.265 7.481 19.132.635 11.868-6.596 18.906-7.231 7.039-18.958 7.039-11.727 0-18.888-7.231L68.428-442.971q-8.236-8.221-11.332-17.125T54-479.904q0-10.904 3.096-19.904t11.332-17.235L363.23-811.846q7.23-7.231 18.481-7.673 11.25-.443 18.48 6.404 6.847 7.265 6.847 19.132 0 11.868-6.903 18.77L104.923-480Z"/></svg>
-                </button>
-                <button id="moveRight" class="move">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="m104.923-480 295.269 294.885q6.847 7.265 7.481 19.132.635 11.868-6.596 18.906-7.231 7.039-18.958 7.039-11.727 0-18.888-7.231L68.428-442.971q-8.236-8.221-11.332-17.125T54-479.904q0-10.904 3.096-19.904t11.332-17.235L363.23-811.846q7.23-7.231 18.481-7.673 11.25-.443 18.48 6.404 6.847 7.265 6.847 19.132 0 11.868-6.903 18.77L104.923-480Z"/></svg>
-                </button>
-                <div id="pageCountWrapper"></div>
+                <div id="tasksDisplayWrapper">
+                    <div class="tasksDisplay">
+                        <div class="tasksDisplayLeft">
+                            <div class="tasksDragWrapper">
+                                <div class="tasksBoxWrapper">
+                                    <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                        <div class="tasksBoxUpper">
+                                            <div class="tasksBoxTitle"><p></p></div>
+                                            <p>Prazo:</p>
+                                        </div>
+                                        <div class="taskBoxDescription">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <button>
+                                        <img src="./assets/edit.png" alt="" />
+                                    </button>
+                                </div>
+                                <div class="drag"></div>
+                            </div>
+                            <div class="tasksDragWrapper">
+                                <div class="tasksBoxWrapper">
+                                    <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                        <div class="tasksBoxUpper">
+                                            <div class="tasksBoxTitle"><p></p></div>
+                                            <p>Prazo:</p>
+                                        </div>
+                                        <div class="taskBoxDescription">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <button>
+                                        <img src="./assets/edit.png" alt="" />
+                                    </button>
+                                </div>
+                                <div class="drag"></div>
+                            </div>
+                            <div class="tasksDragWrapper">
+                                <div class="tasksBoxWrapper">
+                                    <div class="tasksBox" data-id="" data-date="" data-state="" data-task_content="" data-title="" data-worklist="" data-worklist_date="">
+                                        <div class="tasksBoxUpper">
+                                            <div class="tasksBoxTitle"><p></p></div>
+                                            <p>Prazo:</p>
+                                        </div>
+                                        <div class="taskBoxDescription">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <button>
+                                        <img src="./assets/edit.png" alt="" />
+                                    </button>
+                                </div>
+                                <div class="drag"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="addTask">
@@ -158,5 +207,5 @@
         </main>
     </body>
 
-    <script type="module" src="./pendency.js"></script>
+    <script type="module" src="./worklist.js"></script>
 </html>
