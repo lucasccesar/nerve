@@ -261,13 +261,14 @@ h2 {
     position: absolute;
     top: 0;
     left: 0;
+    transition: 500ms;
+    visibility: hidden;
 }
 
 .tasksBoxWrapper {
     display: flex;
     align-items: center;
     gap: 1vw;
-    visibility: hidden;
     justify-content: space-between;
     padding: 1vw;
     background-color: darkcyan;
@@ -389,6 +390,7 @@ span {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+    display: none;
 }
 
 .dragChild{

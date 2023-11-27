@@ -18,7 +18,7 @@ if (user == null) {
         }
     });
     let loading = document.querySelectorAll('.loading');
-    let vw = window.innerWidth/100
+    let vw = window.innerWidth / 100;
 
     let response = await fetch('https://pi-kxis.onrender.com/api/task/', { method: 'GET', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token.refresh.access}` } })
         .then(
@@ -54,14 +54,13 @@ if (user == null) {
     console.log(filteredResponse);
 
     for (let i = 0; i < filteredResponse.length; i++) {
-        console.log(tasksDisplayWrapper.firstElementChild.firstElementChild.children[i])
         for (const [key, value] of Object.entries(filteredResponse[i])) {
             tasksDisplayWrapper.firstElementChild.firstElementChild.children[i].firstElementChild.firstElementChild.dataset[key] = `${value}`;
         }
         tasksDisplayWrapper.firstElementChild.firstElementChild.children[i].firstElementChild.firstElementChild.firstElementChild.firstElementChild.firstElementChild.innerText = filteredResponse[i].title;
         tasksDisplayWrapper.firstElementChild.firstElementChild.children[i].firstElementChild.firstElementChild.firstElementChild.lastElementChild.innerText = `Prazo: ${new Date(filteredResponse[i].date).toLocaleDateString('pt-BR')} ${new Date(filteredResponse[i].date).toLocaleTimeString('pt-BR')}`;
         tasksDisplayWrapper.firstElementChild.firstElementChild.children[i].firstElementChild.firstElementChild.lastElementChild.firstElementChild.innerText = `${filteredResponse[i].task_content}`;
-        tasksDisplayWrapper.firstElementChild.firstElementChild.children[i].firstElementChild.style.visibility = 'visible';
+        tasksDisplayWrapper.firstElementChild.firstElementChild.children[i].style.visibility = 'visible';
     }
 
     document.getElementById('worklistCheckbox').checked = false;
@@ -100,19 +99,107 @@ if (user == null) {
         }
     });
 
-    let tasksDisplayLeft = document.querySelector('.tasksDisplayLeft')
-    let tasksDisplayLeftArray = [...tasksDisplayLeft.children]
-    console.log(tasksDisplayLeftArray)
+    let tasksDisplayLeft = document.querySelector('.tasksDisplayLeft');
+    let tasksDisplayLeftArray = [...tasksDisplayLeft.children];
 
-    var array = []
+    var array = [];
+    var positionsArray = [0, 1, 2];
+    var positionPH;
 
     tasksDisplayLeftArray.forEach((e, index) => {
-        e.style.height = `${(tasksDisplayLeft.offsetHeight - 2 * vw)/3}px`
-        e.style.transform = `translateY(${(((tasksDisplayLeft.offsetHeight - 2 * vw)/3) + vw) * index}px)`
-        array[index] = (((tasksDisplayLeft.offsetHeight - 2 * vw)/3) + vw) * index
+        e.style.height = `${(tasksDisplayLeft.offsetHeight - 2 * vw) / 3}px`;
+        e.style.transform = `translateY(${((tasksDisplayLeft.offsetHeight - 2 * vw) / 3 + vw) * index}px)`;
+        array[index] = ((tasksDisplayLeft.offsetHeight - 2 * vw) / 3 + vw) * index;
     });
 
     console.log(array)
+
+    document.querySelectorAll('.moveUp').forEach((e, index) => {
+        e.addEventListener('click', (event) => {
+            moveUpHandler(event, index);
+        });
+    });
+    document.querySelectorAll('.moveDown').forEach((e, index) => {
+        e.addEventListener('click', (event) => {
+            moveDownHandler(event, index);
+        });
+    });
+
+    function moveUpHandler(event, index) {
+        if (index == 0) {
+            if (positionsArray[index] > 0) {
+                positionPH = positionsArray[index];
+                positionsArray[index] = positionsArray[index] - 1;
+                if (positionsArray[index + 1] == positionsArray[index]) {
+                    positionsArray[index + 1] = positionsArray[index] + 1;
+                } else if (positionsArray[index + 2] == positionsArray[index]) {
+                    positionsArray[index + 2] = positionsArray[index] + 1;
+                }
+            }
+        } else if (index == 1) {
+            if (positionsArray[index] > 0) {
+                positionPH = positionsArray[index];
+                positionsArray[index] = positionsArray[index] - 1;
+                if (positionsArray[index - 1] == positionsArray[index]) {
+                    positionsArray[index - 1] = positionsArray[index] + 1;
+                } else if (positionsArray[index + 1] == positionsArray[index]) {
+                    positionsArray[index + 1] = positionsArray[index] + 1;
+                }
+            }
+        } else if (index == 2) {
+            if (positionsArray[index] > 0) {
+                positionPH = positionsArray[index];
+                positionsArray[index] = positionsArray[index] - 1;
+                if (positionsArray[index - 2] == positionsArray[index]) {
+                    positionsArray[index - 2] = positionsArray[index] + 1;
+                } else if (positionsArray[index - 1] == positionsArray[index]) {
+                    positionsArray[index - 1] = positionsArray[index] + 1;
+                }
+            }
+        }
+        positionsArray.forEach((e,index)=>{
+            tasksDisplayLeft.children[index].style.transform = `translateY(${array[1] * e}px)` 
+        })
+    }
+
+    console.log(filteredResponse)
+
+    function moveDownHandler(event, index) {
+        if (index == 0) {
+            if (positionsArray[index] < filteredResponse.length - 1) {
+                positionPH = positionsArray[index];
+                positionsArray[index] = positionsArray[index] + 1;
+                if (positionsArray[index + 1] == positionsArray[index]) {
+                    positionsArray[index + 1] = positionsArray[index] - 1;
+                } else if (positionsArray[index + 2] == positionsArray[index]) {
+                    positionsArray[index + 2] = positionsArray[index] - 1;
+                }
+            }
+        } else if (index == 1) {
+            if (positionsArray[index] < filteredResponse.length - 1) {
+                positionPH = positionsArray[index];
+                positionsArray[index] = positionsArray[index] + 1;
+                if (positionsArray[index - 1] == positionsArray[index]) {
+                    positionsArray[index - 1] = positionsArray[index] - 1;
+                } else if (positionsArray[index + 1] == positionsArray[index]) {
+                    positionsArray[index + 1] = positionsArray[index] - 1;
+                }
+            }
+        } else if (index == 2) {
+            if (positionsArray[index] < filteredResponse.length - 1) {
+                positionPH = positionsArray[index];
+                positionsArray[index] = positionsArray[index] + 1;
+                if (positionsArray[index - 2] == positionsArray[index]) {
+                    positionsArray[index - 2] = positionsArray[index] - 1;
+                } else if (positionsArray[index - 1] == positionsArray[index]) {
+                    positionsArray[index - 1] = positionsArray[index] - 1;
+                }
+            }
+        }
+        positionsArray.forEach((e,index)=>{
+            tasksDisplayLeft.children[index].style.transform = `translateY(${array[1] * e}px)` 
+        })
+    }
 
     logout.addEventListener('click', () => {
         localStorage.removeItem('authTokens');
@@ -147,7 +234,11 @@ if (user == null) {
     edit.addEventListener('click', () => {
         edit.innerText = edit.innerText == 'Editar' ? 'Cancelar' : 'Editar';
         edit.previousElementSibling.previousElementSibling.innerText = edit.innerText;
+        document.querySelectorAll('.drag').forEach(e=>{
+            e.style.display = e.style.display == 'inline-block' ? 'none' : 'inline-block';
+        })
         editTaskBtn.forEach((e) => {
+            console.log(e)
             e.style.display = e.style.display == 'inline-block' ? 'none' : 'inline-block';
             e.addEventListener('click', () => {
                 editTask.firstElementChild.dataset.id = e.parentElement.firstElementChild.dataset.id;
