@@ -33,6 +33,12 @@ if (user == null) {
         }
     });
 
+    logout.addEventListener('click', () => {
+        localStorage.removeItem('authTokens');
+        localStorage.removeItem('user');
+        window.location.reload();
+    });
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         

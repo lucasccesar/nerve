@@ -123,6 +123,7 @@ header:after {
 #user p {
     color: white;
     font-weight: 400;
+    text-transform: capitalize;
 }
 
 #dropdown {
@@ -145,6 +146,7 @@ header:after {
 }
 
 #logout {
+    padding: 0.7vw 0.9vw;
     width: 100%;
     background: none;
     background-color: #1e1e1e;

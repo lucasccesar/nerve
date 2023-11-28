@@ -370,8 +370,8 @@ if (user == null) {
             let editTask = {
                 title: event.target.parentElement.parentElement.editTaskTitle.value,
                 task_content: event.target.parentElement.parentElement.editTaskDescription.value,
-                state: 'concluida',
-                worklist: false,
+                state: event.target.parentElement.parentElement.editUrgencyCheckbox.checked == false && event.target.parentElement.parentElement.editWorklistCheckbox.checked == false ? 'concluido' : event.target.parentElement.parentElement.editUrgencyCheckbox.checked ? 'urgencia' : 'pendente',
+                worklist: event.target.parentElement.parentElement.editUrgencyCheckbox.checked == false && event.target.parentElement.parentElement.editWorklistCheckbox.checked == false ? false : event.target.parentElement.parentElement.editWorklistCheckbox.checked.toString(),
                 date: event.target.parentElement.parentElement.editDeadline.value + ':00',
             };
             let response = await fetch(`https://pi-kxis.onrender.com/api/task/${event.target.parentElement.parentElement.dataset.id}/`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token.refresh.access}` }, body: JSON.stringify(editTask) });

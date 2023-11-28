@@ -118,6 +118,7 @@ button:hover{
 #user p {
     color: white;
     font-weight: 400;
+    text-transform: capitalize;
 }
 
 #dropdown {
