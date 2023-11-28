@@ -11,6 +11,15 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+button{
+    border: none;
+    cursor: pointer;
+}
+
+.material-symbols-rounded {
+    font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 40;
+}
+
 body {
     width: 70vw;
     background-color: #131212;
@@ -67,7 +76,7 @@ header:after {
 }
 
 .currentAnchor {
-    border-bottom: 3px solid #979797;
+    border-bottom: 3px solid darkcyan;
     border-top: 3px solid #ffffff00;
 }
 
@@ -87,7 +96,7 @@ header:after {
     gap: 1vw;
 }
 
-button {
+#addTaskBtn, #edit {
     height: fit-content;
     background: rgb(185, 255, 255);
     background: linear-gradient(45deg, rgb(143, 180, 180) 0%, rgb(5, 122, 122) 100%);
@@ -99,7 +108,7 @@ button {
     font-weight: bold;
 }
 
-button:hover {
+#addTaskBtn:hover, #edit:hover {
     background: linear-gradient(45deg, rgb(120, 151, 151) 0%, rgb(4, 95, 95) 100%);
 }
 
@@ -109,10 +118,6 @@ button:hover {
     gap: 4vw;
     cursor: pointer;
     position: relative;
-}
-
-#user svg {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
 }
 
 #user p {
@@ -125,7 +130,7 @@ button:hover {
     height: 1.5vw;
 }
 
-#dropdownDiv{
+#dropdownDiv {
     position: absolute;
     top: 100%;
     width: 100%;
@@ -139,7 +144,7 @@ button:hover {
     visibility: hidden;
 }
 
-#logout{
+#logout {
     width: 100%;
     background: none;
     background-color: #1e1e1e;
@@ -151,14 +156,13 @@ button:hover {
     transition: 300ms;
 }
 
-#logout:hover{
+#logout:hover {
     background-color: #141414;
 }
 
-#logout span{
+#logout span {
     color: white;
 }
-
 
 #userSection {
     display: flex;
@@ -169,7 +173,6 @@ button:hover {
 .loading {
     display: inline-block;
     animation: load 500ms infinite linear;
-    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(251deg) brightness(104%) contrast(101%);
     width: 2vw;
     height: 2vw;
     margin: auto;
@@ -239,7 +242,7 @@ h2 {
     align-items: center;
 }
 
-#tasksDisplayWrapper{
+#tasksDisplayWrapper {
     display: flex;
     width: fit-content;
     gap: 15vw;
@@ -253,7 +256,7 @@ h2 {
     min-width: 50vw;
 }
 
-.tasksDragWrapper{
+.tasksDragWrapper {
     display: flex;
     width: 100%;
     align-items: center;
@@ -263,6 +266,7 @@ h2 {
     left: 0;
     transition: 500ms;
     visibility: hidden;
+    gap: 1vw;
 }
 
 .tasksBoxWrapper {
@@ -316,7 +320,7 @@ h2 {
     align-items: center;
 }
 
-.tasksBoxUpper p{
+.tasksBoxUpper p {
     color: black;
 }
 
@@ -328,6 +332,15 @@ h2 {
     padding: 0vw 0.5vw;
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0.25vw;
+}
+
+.state {
+    height: 0.75vw;
+    width: 0.75vw;
+    border-radius: 100%;
 }
 
 .tasksBoxTitle p {
@@ -361,7 +374,7 @@ h2 {
 }
 
 span {
-    color: #979797;
+    color: rgb(0, 163, 163);
 }
 
 .activities {
@@ -380,10 +393,7 @@ span {
     font-weight: bold;
 }
 
-.drag{
-    width: 4vw;
-    height: 4vw;
-    background-color: white;
+.drag {
     cursor: pointer;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -393,7 +403,7 @@ span {
     display: none;
 }
 
-.dragChild{
+.dragChild {
     width: 4vw;
     height: 4vw;
     background-color: rgb(163, 163, 166, 0);
@@ -406,34 +416,71 @@ span {
     z-index: 1000000;
 }
 
-.move:hover{
+.move {
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
     background: none;
 }
 
-.move svg{
-    width: 7vw;
+.move:hover {
+    background: none;
+}
+
+.move svg {
+    vertical-align: middle !important;
+    width: 2vw;
     height: fit-content;
     height: 100%;
-    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(251deg) brightness(104%) contrast(101%);
 }
 
-#moveLeft{
-    top: 50%;
-    left: 0;
-    transform: translate(0, -50%);
-    display: none;
-}
-
-
-#moveRight{
-    top: 50%;
-    left: 100%;
-    transform: translate(-100%, -50%);
-    
-}
-
-#moveRight svg{
+.moveDown svg {
     rotate: 180deg;
+}
+
+#startTask {
+    width: 4vw;
+    height: 4vw;
+    background-color: rgb(211, 116, 0);
+    position: fixed;
+    right: 2vw;
+    bottom: 2vw;
+    border-radius: 1000px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 0.5vw;
+    overflow: hidden;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+#startTask:hover {
+    width: 14vw;
+}
+
+#stopwatch {
+    min-width: 4vw;
+    min-height: 4vw;
+    border-radius: 1000px;
+    background: none;
+    background-color: rgb(211, 116, 0);
+    padding: 0;
+    transition: 500ms;
+    z-index: 1000;
+}
+
+#stopwatch span {
+    color: black;
+    font-size: 3vw;
+}
+
+#startTask p {
+    min-width: max-content;
+    height: fit-content;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #addTask,
@@ -565,11 +612,13 @@ input[type='submit']:hover {
     background-color: rgb(0, 109, 109);
 }
 
-#save, #conclude, #delete{
+#save,
+#conclude,
+#delete {
     font-size: 20px;
     border: none;
     background: none;
-    background-color: darkcyan ;
+    background-color: darkcyan;
     border-radius: 10px;
     padding: 0.5vw 0;
     cursor: pointer;
@@ -582,35 +631,180 @@ input[type='submit']:hover {
     background-color: rgb(0, 109, 109);
 }
 
-#buttons{
+#buttons {
     display: flex;
     gap: 1vw;
 }
 
-#save, #conclude, #delete{
+#save,
+#conclude,
+#delete {
     width: 100%;
 }
 
-#conclude{
+#conclude {
     background-color: green;
 }
 
-#conclude:hover{
+#conclude:hover {
     background-color: rgb(0, 102, 0);
 }
 
-#delete{
+#delete {
     background-color: red;
 }
 
-#delete:hover{
+#delete:hover {
     background-color: rgb(155, 1, 1);
+}
+
+@keyframes pulsing {
+    0% {
+        color: rgb(0, 139, 139, 1);
+    }
+    50% {
+        color: rgba(0, 139, 139, 0.6);
+    }
+    100% {
+        color: rgb(0, 139, 139, 1);
+    }
+}
+
+.animationClass {
+    animation: pulsing 1000ms infinite linear;
+}
+
+#timerWrapper {
+    min-width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#timer {
+    background-color: #131212;
+    padding: 5vw;
+    border-radius: 100px;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#addTimeWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+
+.addTime{
+    box-sizing: border-box;
+    width: 6vw;
+    height: 3vw;
+    border-radius: 1000px;
+    background: none;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.addTime:hover{
+    background-color: rgb(212, 212, 212) !important;
+}
+
+#timerMiddle {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+#time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#time p {
+    font-size: 20vw;
+    color: darkcyan;
+    font-weight: bold;
+    height: fit-content;
+}
+
+#timerMiddle button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(100%, -50%);
+}
+
+#editTime{
+    background: none;
+    background-color: white;
+    border-radius: 1000px;
+    max-width: 4vw;
+    max-height: 4vw;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#editTime:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+#editTime img{
+    width: 1.5vw;
+}
+
+#funcBtnsWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+
+#startTimer, #resetTimer{
+    background: none;
+    background-color: white;
+    border-radius: 1000px;
+    max-width: 4vw;
+    max-height: 4vw;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#startTimer:hover, #resetTimer:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+#startTimer span, #resetTimer span{
+    color: #131212  ;
+    font-size: 2vw;
+}
+
+.buttonDisabled{
+    opacity: 40%;
+    pointer-events: none !important;
 }
 
 .loading {
     display: inline-block;
     animation: load 500ms infinite linear;
-    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(251deg) brightness(104%) contrast(101%);
     width: 2vw;
     height: 2vw;
     margin: auto;

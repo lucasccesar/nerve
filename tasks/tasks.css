@@ -214,12 +214,12 @@ h2 {
 }
 
 #pendency {
-    border: 3px solid darkcyan;
+    border: 3px solid #DC9F01;
     border-radius: 15px;
 }
 
 #pendency:hover {
-    background-color: darkcyan;
+    background-color: #DC9F01;
     color: #131212;
 }
 

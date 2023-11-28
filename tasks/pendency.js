@@ -139,7 +139,7 @@ if (user == null) {
 
     let tasksDisplayWrapper = document.querySelector('#tasksDisplayWrapper');
     let displaysCount = Math.ceil(filteredResponse.length / 6);
-    let pageCountWrapper = document.getElementById('pageCountWrapper')
+    let pageCountWrapper = document.getElementById('pageCountWrapper');
 
     if (filteredResponse.length / 6 > 1) {
         for (let i = 0; i <= displaysCount - 1; i++) {
@@ -172,10 +172,10 @@ if (user == null) {
         }
 
         for (let i = 0; i < displaysCount; i++) {
-            pageCountWrapper.innerHTML += `<div class="${i==0 ? 'pageCount currentPage' : 'pageCount'}"></div>`
+            pageCountWrapper.innerHTML += `<div class="${i == 0 ? 'pageCount currentPage' : 'pageCount'}"></div>`;
         }
     } else {
-        document.getElementById('moveRight').style.display = 'none'
+        document.getElementById('moveRight').style.display = 'none';
         document.getElementById('tasksDisplayWrapper').innerHTML = divHTML;
         filteredResponse.forEach((e, index) => {
             let tasksDisplay = document.querySelector('.tasksDisplay');
@@ -209,12 +209,12 @@ if (user == null) {
             currentMove = currentMove + moveSize;
             tasksDisplayWrapper.style.transform = `translateX(${currentMove}vw)`;
             moveCount--;
-            pageCountWrapper.children[moveCount].classList.remove('currentPage')
-            pageCountWrapper.children[moveCount - 1].classList.add('currentPage')
-            if(moveCount == 1){
-                moveLeft.style.display = 'none'
+            pageCountWrapper.children[moveCount].classList.remove('currentPage');
+            pageCountWrapper.children[moveCount - 1].classList.add('currentPage');
+            if (moveCount == 1) {
+                moveLeft.style.display = 'none';
             }
-            moveRight.style.display = 'inline-block'
+            moveRight.style.display = 'inline-block';
         }
     });
     let moveRight = document.getElementById('moveRight');
@@ -223,12 +223,12 @@ if (user == null) {
             currentMove = currentMove - moveSize;
             tasksDisplayWrapper.style.transform = `translateX(${currentMove}vw)`;
             moveCount++;
-            pageCountWrapper.children[moveCount - 1].classList.add('currentPage')
-            pageCountWrapper.children[moveCount - 2].classList.remove('currentPage')
-            if(moveCount == displaysCount){
-                moveRight.style.display = 'none'
+            pageCountWrapper.children[moveCount - 1].classList.add('currentPage');
+            pageCountWrapper.children[moveCount - 2].classList.remove('currentPage');
+            if (moveCount == displaysCount) {
+                moveRight.style.display = 'none';
             }
-            moveLeft.style.display = 'inline-block'
+            moveLeft.style.display = 'inline-block';
         }
     });
 
@@ -258,12 +258,12 @@ if (user == null) {
         if (event.target != logout) {
             if (dropdownDiv.style.transform != `translateY(0px)`) {
                 dropdownDiv.style.transform = `translateY(0px)`;
-                dropdownDiv.style.opacity = '100%'
-                dropdownDiv.style.visibility = 'visible'
+                dropdownDiv.style.opacity = '100%';
+                dropdownDiv.style.visibility = 'visible';
             } else {
                 dropdownDiv.style.transform = 'translateY(-0.3vw)';
-                dropdownDiv.style.opacity = '0%'
-                dropdownDiv.style.visibility = 'hidden'
+                dropdownDiv.style.opacity = '0%';
+                dropdownDiv.style.visibility = 'hidden';
             }
         }
     });
@@ -311,9 +311,11 @@ if (user == null) {
                 if (JSON.parse(document.getElementById('editWorklistCheckbox').value) == true) {
                     document.getElementById('editWorklistCheckbox').parentElement.firstElementChild.style.transform = 'translateX(100%)';
                     document.getElementById('editWorklistCheckbox').parentElement.style.backgroundColor = 'darkcyan';
+                    document.getElementById('editWorklistCheckbox').checked = true;
                 } else {
                     document.getElementById('editWorklistCheckbox').parentElement.firstElementChild.style.transform = 'translateX(0%)';
                     document.getElementById('editWorklistCheckbox').parentElement.style.backgroundColor = 'white';
+                    document.getElementById('editWorklistCheckbox').checked = false;
                 }
                 document.getElementById('editUrgencyCheckbox').value = false;
                 document.getElementById('editDeadline').value = e.parentElement.firstElementChild.dataset.date.substr(0, 16);
@@ -339,7 +341,7 @@ if (user == null) {
                 title: event.target.parentElement.editTaskTitle.value,
                 task_content: event.target.parentElement.editTaskDescription.value,
                 state: 'concluido',
-                worklist: event.target.parentElement.editWorklistCheckbox.checked.toString(),
+                worklist: false,
                 date: event.target.parentElement.editDeadline.value + ':00',
             };
             let response = await fetch(`https://pi-kxis.onrender.com/api/task/${event.target.parentElement.dataset.id}/`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token.refresh.access}` }, body: JSON.stringify(editTask) });

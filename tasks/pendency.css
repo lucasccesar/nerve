@@ -67,7 +67,7 @@ header:after {
 }
 
 .currentAnchor {
-    border-bottom: 3px solid darkcyan;
+    border-bottom: 3px solid #DC9F01;
     border-top: 3px solid #ffffff00;
 }
 
@@ -259,7 +259,7 @@ h2 {
     visibility: hidden;
     justify-content: space-between;
     padding: 1vw;
-    background-color: darkcyan;
+    background-color: #DC9F01;
     border-radius: 10px;
 }
 
@@ -346,7 +346,7 @@ h2 {
 }
 
 span {
-    color: #00c1c1;
+    color: #DC9F01;
 }
 
 .activities {

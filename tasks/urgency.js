@@ -312,6 +312,7 @@ if (user == null) {
                 if (JSON.parse(document.getElementById('editWorklistCheckbox').value) == true) {
                     document.getElementById('editWorklistCheckbox').parentElement.firstElementChild.style.transform = 'translateX(100%)';
                     document.getElementById('editWorklistCheckbox').parentElement.style.backgroundColor = 'darkcyan';
+                    document.getElementById('editWorklistCheckbox').checked = true
                 } else {
                     document.getElementById('editWorklistCheckbox').parentElement.firstElementChild.style.transform = 'translateX(0%)';
                     document.getElementById('editWorklistCheckbox').parentElement.style.backgroundColor = 'white';
@@ -347,7 +348,7 @@ if (user == null) {
                 title: event.target.parentElement.editTaskTitle.value,
                 task_content: event.target.parentElement.editTaskDescription.value,
                 state: 'concluido',
-                worklist: event.target.parentElement.editWorklistCheckbox.checked.toString(),
+                worklist: false,
                 date: event.target.parentElement.editDeadline.value + ':00',
             };
             let response = await fetch(`https://pi-kxis.onrender.com/api/task/${event.target.parentElement.dataset.id}/`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token.refresh.access}` }, body: JSON.stringify(editTask) });
