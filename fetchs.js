@@ -13,7 +13,6 @@ fetch('https://pi-kxis.onrender.com/api/task/', { method: 'POST', headers: { 'Co
 /* ---------RECEBER TASKS--------- */
 
 let response1 = await fetch('https://pi-kxis.onrender.com/api/task/', { method: 'GET', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token.refresh.access}` } })
-    .then(console.log('carregando'))
     .then((response) => response.json());
 
 /* ---------CRIAR CONTA--------- */
@@ -25,9 +24,7 @@ let response2 = await fetch('https://pi-kxis.onrender.com/api/signup/', {
     },
     body: JSON.stringify({ name: e.target.name.value, lastname: e.target.lastName.value, username: e.target.usernameSignup.value, password: e.target.passwordSignin.value, email: e.target.emailSignin.value }),
 })
-    .then(console.log('carregando'))
     .then((response) => response.json());
-console.log(response2.username);
 
 /* ---------LOGAR CONTA--------- */
 

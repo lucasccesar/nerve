@@ -36,7 +36,6 @@ if (user == null) {
 
     response.forEach((e) => {
         if (e.state == 'concluido') {
-            console.log(e)
             filteredResponse[filteredResponse.length] = e;
         }
     });

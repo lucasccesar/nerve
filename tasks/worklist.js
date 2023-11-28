@@ -33,8 +33,6 @@ if (user == null) {
             return response.json();
         });
 
-    console.log(response);
-
     let filteredResponse = [];
 
     response.forEach((e) => {
@@ -50,8 +48,6 @@ if (user == null) {
     }
 
     let tasksDisplayWrapper = document.querySelector('#tasksDisplayWrapper');
-
-    console.log(filteredResponse);
 
     for (let i = 0; i < filteredResponse.length; i++) {
         for (const [key, value] of Object.entries(filteredResponse[i])) {
@@ -122,8 +118,6 @@ if (user == null) {
         array[index] = ((tasksDisplayLeft.offsetHeight - 2 * vw) / 3 + vw) * index;
     });
 
-    console.log(array);
-
     document.querySelectorAll('.moveUp').forEach((e, index) => {
         e.addEventListener('click', (event) => {
             moveUpHandler(event, index);
@@ -172,8 +166,6 @@ if (user == null) {
             tasksDisplayLeft.children[index].style.transform = `translateY(${array[1] * e}px)`;
         });
     }
-
-    console.log(filteredResponse);
 
     function moveDownHandler(event, index) {
         if (index == 0) {
@@ -249,7 +241,6 @@ if (user == null) {
             e.style.display = e.style.display == 'inline-block' ? 'none' : 'inline-block';
         });
         editTaskBtn.forEach((e) => {
-            console.log(e);
             e.style.display = e.style.display == 'inline-block' ? 'none' : 'inline-block';
             e.addEventListener('click', () => {
                 editTask.firstElementChild.dataset.id = e.parentElement.firstElementChild.dataset.id;
@@ -369,7 +360,6 @@ if (user == null) {
                 timeNums[1] = timeNums[2];
                 timeNums[2] = timeNums[3];
                 timeNums[3] = parseInt(event.key);
-                console.log(timeNums);
             } else {
                 timeNums[3] = timeNums[2];
                 timeNums[2] = timeNums[1];
@@ -419,10 +409,18 @@ if (user == null) {
         if (isCounting) {
             event.srcElement.innerHTML = `<span class="material-symbols-rounded">pause</span>`;
             document.getElementById('resetTimer').classList.add('buttonDisabled');
+            document.querySelectorAll('.addTime').forEach(e=>{
+                e.classList.add('buttonDisabled')
+            })
+            document.getElementById('editTime').classList.add('buttonDisabled')
             countdownInterval = setInterval(countdown, 1000);
         } else {
             event.srcElement.innerHTML = `<span class="material-symbols-rounded">play_arrow</span>`;
             document.getElementById('resetTimer').classList.remove('buttonDisabled');
+            document.querySelectorAll('.addTime').forEach(e=>{
+                e.classList.remove('buttonDisabled')
+            })
+            document.getElementById('editTime').classList.remove('buttonDisabled')
             clearInterval(countdownInterval);
         }
     };
@@ -466,7 +464,6 @@ if (user == null) {
     document.querySelectorAll('.addTime').forEach((e) => {
         e.addEventListener('click', (event) => {
             if (event.srcElement.id == 'addFive') {
-                console.log(5);
                 timeNums[1] = timeNums[1] + 5;
                 if (timeNums[1] > 9) {
                     timeNums[0] = timeNums[0] + 1;
@@ -477,7 +474,6 @@ if (user == null) {
                     }
                 }
             } else if (event.srcElement.id == 'addFifteen') {
-                console.log(parseInt(timeNums[0].toString() + timeNums[1].toString()));
                 if (parseInt(timeNums[0].toString() + timeNums[1].toString()) + 15 < 99) {
                     timeNums[1] = timeNums[1] + 5;
                     timeNums[0] = timeNums[0] + 1;

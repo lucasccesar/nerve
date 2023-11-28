@@ -36,7 +36,6 @@ if (user == null) {
 
     response.forEach((e) => {
         if (e.state == 'urgencia') {
-            console.log(e)
             filteredResponse[filteredResponse.length] = e;
         }
     });
