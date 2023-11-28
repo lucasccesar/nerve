@@ -96,7 +96,7 @@ header:after {
     gap: 1vw;
 }
 
-#addTaskBtn, #edit {
+#addTaskBtn, #mainUpper button {
     height: fit-content;
     background: rgb(185, 255, 255);
     background: linear-gradient(45deg, rgb(143, 180, 180) 0%, rgb(5, 122, 122) 100%);
@@ -108,7 +108,7 @@ header:after {
     font-weight: bold;
 }
 
-#addTaskBtn:hover, #edit:hover {
+#addTaskBtn:hover, #mainUpper button:hover {
     background: linear-gradient(45deg, rgb(120, 151, 151) 0%, rgb(4, 95, 95) 100%);
 }
 

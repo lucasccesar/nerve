@@ -8,7 +8,9 @@
 
     <body>
         <div>
-            <h2>conta criada</h2>
+            <h2>Conta Criada com Sucesso!</h2>
+            <p>Volte para a página de login e desfrute da nossa plataforma</p>
+            <a href="login.html">Voltar Para o Login</a>
         </div>
     </body>
 
@@ -41,10 +43,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            gap: 1vw;
         }
 
         div h2 {
             color: white;
+        }
+
+        p{
+            color: white;
+        }
+
+        a{
+            background: none;
+            border: none;
+            text-decoration: underline; 
+            color: white;
+            cursor: pointer;
         }
     </style>
 </html>
