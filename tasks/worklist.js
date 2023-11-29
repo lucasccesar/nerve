@@ -96,11 +96,42 @@ if (user == null) {
         }
     });
 
-    document.getElementById('startTask').addEventListener('click', () => {
+    var isCounting = false;
+    const miniCountdown = document.getElementById('miniCountdown')
+    const startTask = document.getElementById('startTask')
+
+    startTask.addEventListener('click', () => {
+        console.log(isCounting)
         document.getElementById('timerWrapper').style.display = `inline-block`;
         document.getElementById('timerWrapper').addEventListener('click', (event) => {
             if (event.target.id == 'timerWrapper') {
                 document.getElementById('timerWrapper').style.display = `none`;
+                if(isCounting){
+                    miniCountdown.style.display = `flex`
+                    startTask.style.display = `none`
+                } else{
+                    miniCountdown.style.display = `none`
+                    startTask.style.display = `flex`
+                }
+            }
+        });
+    });
+
+    miniCountdown.addEventListener('click', () => {
+        console.log(isCounting)
+        document.getElementById('timerWrapper').style.display = `inline-block`;
+        startTask.style.display = `flex`
+        miniCountdown.style.display = `none`
+        document.getElementById('timerWrapper').addEventListener('click', (event) => {
+            if (event.target.id == 'timerWrapper') {
+                document.getElementById('timerWrapper').style.display = `none`;
+                if(isCounting){
+                    miniCountdown.style.display = `flex`
+                    startTask.style.display = `none`
+                } else{
+                    miniCountdown.style.display = `none`
+                    startTask.style.display = `flex`
+                }
             }
         });
     });
@@ -332,7 +363,7 @@ if (user == null) {
         if (tokens) {
             let response = await fetch(`https://pi-kxis.onrender.com/api/task/${event.target.parentElement.parentElement.dataset.id}/`, { method: 'DELETE', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token.refresh.access}` } });
             let data = await response.json();
-
+            
             if (response.status === 202) {
                 window.location.reload();
             } else {
@@ -340,12 +371,13 @@ if (user == null) {
             }
         }
     });
-
+    
     function addTaskHandler() {
         addTask.style.display = 'flex';
         var sla = new Date().toString().split(' ');
         document.getElementById('deadline').min = `${new Date().toISOString().split('T')[0]} ${sla[4].split(':')[0] + ':' + sla[4].split(':')[1]}`;
     }
+
 
     p.innerHTML += `${user.name} ${user.lastname}`;
 
@@ -402,7 +434,6 @@ if (user == null) {
     });
 
     var countdownInterval;
-    var isCounting = false;
 
     let countdownFunc = (event) => {
         isCounting = !isCounting;
@@ -451,13 +482,17 @@ if (user == null) {
             timeNums.forEach((e, index) => {
                 nums[index].innerText = e;
             });
+            document.querySelectorAll('.buttonDisabled').forEach(e=>{
+                e.classList.remove('buttonDisabled')
+            })
             document.getElementById('startTimer').classList.add('buttonDisabled');
             document.getElementById('startTimer').innerHTML = `<span class="material-symbols-rounded">play_arrow</span>`;
-            document.getElementById('resetTimer').classList.remove('buttonDisabled');
             clearInterval(countdownInterval);
+            isCounting = !isCounting;
         }
         timeNums.forEach((e, index) => {
             nums[index].innerText = e;
+            document.querySelectorAll('.miniNums')[index].innerText = e
         });
     }
 
@@ -470,7 +505,7 @@ if (user == null) {
                     timeNums[1] = timeNums[1] - 10;
                     if (timeNums[0] > 9) {
                         timeNums[0] = 9;
-                        timeNums[1] = 5;
+                        timeNums[1] = 9;
                     }
                 }
             } else if (event.srcElement.id == 'addFifteen') {

@@ -382,7 +382,6 @@ main {
     width: 100vw;
     height: fit-content;
     background-color: #0f0f0f;
-    padding-bottom: 6vw;
     transition: 500ms;
 }
 
@@ -450,3 +449,88 @@ main {
     color: #b4b4b4;
     font-family: 'DM Sans', sans-serif;
 }
+
+#stillQuestion{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0f0f0f;
+    padding-bottom: 6vw;
+}
+
+#stillQuestion p{
+    width: fit-content;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+}
+
+#stillQuestion a{
+    color: darkcyan;
+    font-family: 'DM Sans', sans-serif;
+}
+
+#stillQuestion a:hover{
+    color: rgb(0, 109, 109);
+}
+
+footer{
+    background-color: #0f0f0f;
+    width: 100vw;
+    height: fit-content;
+    padding-bottom: 5vw;
+}
+
+footer p, footer a {
+    font-family: 'DM Sans', sans-serif;
+}
+
+footer a:visited{
+    color: white;
+}
+
+#footerInner{
+    margin: auto;
+    border-top: 1px solid #1C1B1D;
+    width: 70vw;
+    padding-top: 3vw;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    height: fit-content;
+}
+
+#footerLeftSection{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: space-between;
+    justify-content: center;
+}
+
+#footerLeftSection a{
+    color: darkcyan;
+}
+
+footer img{
+    height: 3vw;
+}
+
+#footerRightSection{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#footerInner div div{
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    width: fit-content;
+}
+
+

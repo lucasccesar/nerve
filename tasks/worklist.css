@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,700&family=Poppins:wght@300;400;700&family=Work+Sans:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&family=Rajdhani:wght@400;700&family=Saira+Semi+Condensed:wght@400;700&display=swap');
 
 * {
     margin: 0;
@@ -11,7 +12,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-button{
+button {
     border: none;
     cursor: pointer;
 }
@@ -96,7 +97,8 @@ header:after {
     gap: 1vw;
 }
 
-#addTaskBtn, #mainUpper button {
+#addTaskBtn,
+#mainUpper button {
     height: fit-content;
     background: rgb(185, 255, 255);
     background: linear-gradient(45deg, rgb(143, 180, 180) 0%, rgb(5, 122, 122) 100%);
@@ -108,7 +110,8 @@ header:after {
     font-weight: bold;
 }
 
-#addTaskBtn:hover, #mainUpper button:hover {
+#addTaskBtn:hover,
+#mainUpper button:hover {
     background: linear-gradient(45deg, rgb(120, 151, 151) 0%, rgb(4, 95, 95) 100%);
 }
 
@@ -357,7 +360,8 @@ h2 {
     border-radius: 10px;
     display: flex;
     padding: 0.5vw;
-    line-break: anywhere;
+    line-break: auto;
+    text-align: justify;
     overflow-y: auto;
 }
 
@@ -438,6 +442,30 @@ span {
 
 .moveDown svg {
     rotate: 180deg;
+}
+
+#miniCountdown{
+    width: fit-content;
+    height: 4vw;
+    background-color: rgb(211, 116, 0);
+    position: fixed;
+    right: 2vw;
+    bottom: 2vw;
+    border-radius: 1000px;
+    display: none;
+    cursor: pointer;
+    padding: 0 1vw;
+}
+
+#miniCountdown:hover{
+    background-color: rgb(172, 94, 0);
+}
+
+#miniCountdown p{
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 3vw;
+    color: black;
 }
 
 #startTask {
@@ -690,7 +718,7 @@ input[type='submit']:hover {
     background-color: #131212;
     padding: 5vw;
     border-radius: 100px;
-    width: fit-content;
+    width: 60vw;
     height: fit-content;
     position: absolute;
     top: 50%;
@@ -702,14 +730,14 @@ input[type='submit']:hover {
     flex-direction: column;
 }
 
-#addTimeWrapper{
+#addTimeWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1vw;
 }
 
-.addTime{
+.addTime {
     box-sizing: border-box;
     width: 6vw;
     height: 3vw;
@@ -721,7 +749,7 @@ input[type='submit']:hover {
     font-size: 15px;
 }
 
-.addTime:hover{
+.addTime:hover {
     background-color: rgb(212, 212, 212) !important;
 }
 
@@ -742,6 +770,9 @@ input[type='submit']:hover {
     color: darkcyan;
     font-weight: bold;
     height: fit-content;
+    /* font-family: 'Monomaniac One', sans-serif; */
+    font-family: 'Rajdhani', sans-serif;
+    /* font-family: 'Saira Semi Condensed', sans-serif; */
 }
 
 #timerMiddle button {
@@ -751,7 +782,7 @@ input[type='submit']:hover {
     transform: translate(100%, -50%);
 }
 
-#editTime{
+#editTime {
     background: none;
     background-color: white;
     border-radius: 1000px;
@@ -763,22 +794,23 @@ input[type='submit']:hover {
     align-items: center;
 }
 
-#editTime:hover{
+#editTime:hover {
     background-color: rgb(212, 212, 212);
 }
 
-#editTime img{
+#editTime img {
     width: 1.5vw;
 }
 
-#funcBtnsWrapper{
+#funcBtnsWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1vw;
 }
 
-#startTimer, #resetTimer{
+#startTimer,
+#resetTimer {
     background: none;
     background-color: white;
     border-radius: 1000px;
@@ -790,16 +822,18 @@ input[type='submit']:hover {
     align-items: center;
 }
 
-#startTimer:hover, #resetTimer:hover{
+#startTimer:hover,
+#resetTimer:hover {
     background-color: rgb(212, 212, 212);
 }
 
-#startTimer span, #resetTimer span{
-    color: #131212  ;
+#startTimer span,
+#resetTimer span {
+    color: #131212;
     font-size: 2vw;
 }
 
-.buttonDisabled{
+.buttonDisabled {
     opacity: 40%;
     pointer-events: none !important;
 }

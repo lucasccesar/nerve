@@ -8,7 +8,9 @@ const preloadingLogo = document.getElementById('preloadingLogo');
 const preloadingTitle = document.getElementById('preloadingTitle');
 const preloadingText = document.getElementById('preloadingText');
 const faq = document.getElementById('faq');
-let faqHeight = faq.offsetHeight - 6 * vw;
+let faqHeight = faq.offsetHeight;
+faq.style.height = `${faqHeight}px`
+console.log(faqHeight)
 const faqs = document.querySelectorAll('.faqs');
 const faqsHeight = faqs[0].offsetHeight;
 faqs.forEach((e) => {
