@@ -486,7 +486,7 @@ footer p, footer a {
     font-family: 'DM Sans', sans-serif;
 }
 
-footer a:visited{
+footer a, footer a:active, footer a:visited{
     color: white;
 }
 

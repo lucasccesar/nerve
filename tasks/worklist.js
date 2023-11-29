@@ -95,13 +95,13 @@ if (user == null) {
             }
         }
     });
+    let audio = new Audio("./assets/alarm.mp3")
 
     var isCounting = false;
     const miniCountdown = document.getElementById('miniCountdown')
     const startTask = document.getElementById('startTask')
 
     startTask.addEventListener('click', () => {
-        console.log(isCounting)
         document.getElementById('timerWrapper').style.display = `inline-block`;
         document.getElementById('timerWrapper').addEventListener('click', (event) => {
             if (event.target.id == 'timerWrapper') {
@@ -118,7 +118,6 @@ if (user == null) {
     });
 
     miniCountdown.addEventListener('click', () => {
-        console.log(isCounting)
         document.getElementById('timerWrapper').style.display = `inline-block`;
         startTask.style.display = `flex`
         miniCountdown.style.display = `none`
@@ -487,6 +486,7 @@ if (user == null) {
             })
             document.getElementById('startTimer').classList.add('buttonDisabled');
             document.getElementById('startTimer').innerHTML = `<span class="material-symbols-rounded">play_arrow</span>`;
+            audio.play()
             clearInterval(countdownInterval);
             isCounting = !isCounting;
         }

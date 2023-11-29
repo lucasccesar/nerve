@@ -57,7 +57,15 @@
                         <div class="inputWrapper">
                             <label for="usernameSignup">Nome de Usuário</label>
                             <div class="input">
-                                <input type="text" id="usernameSignup" name="usernameSignup" minlength="3" maxlength="20" required />
+                                <input
+                                    type="text"
+                                    id="usernameSignup"
+                                    name="usernameSignup"
+                                    minlength="3"
+                                    maxlength="20"
+                                    required
+                                    onkeydown="return /[A-Za-z0-9_]/.test(event.key)"
+                                />
                                 <span class="material-symbols-rounded"> account_circle </span>
                             </div>
                         </div>

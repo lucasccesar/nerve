@@ -332,7 +332,7 @@ h2 {
     border-radius: 10px;
     display: flex;
     padding: 0.5vw;
-    line-break: auto;
+    line-break: anywhere;
     overflow-y: auto;
 }
 
